@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+body {
+	font-family: 'Oswald', sans-serif !important;
+}
+.text-heading1 {
+	font-family: 'Permanent Marker', cursive !important;
+	color: red;
+	text-shadow: 4px 4px 4px black;
+}
+.text-heading2 {
+	font-family: 'Permanent Marker', cursive !important;
+	color: orange;
+	text-shadow: 4px 4px 4px black;
+}
+.fav1 {
+	background: linear-gradient(to bottom, #006666 0%, #33cccc 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fav2 {
+	background: linear-gradient(to right, #006666 0%, #33cccc 100%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fav3 {
+	background: linear-gradient(to top right, #006666 0%, #33cccc 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.fav4 {
+	background: linear-gradient(to top left, #006666 0%, #33cccc 100%);
+}
+.bg1 {
+	background: linear-gradient(to bottom, #43cea2 0%, #185a9d 100%);
 }
 
-.App-link {
-  color: #61dafb;
+.bg2 {
+	background: linear-gradient(to right, #43cea2 0%, #185a9d 100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg3 {
+	background: linear-gradient(to top right, #43cea2 0%, #185a9d 100%);
+}
+
+.bg4 {
+	background: linear-gradient(to top left, #43cea2 0%, #185a9d 100%);
 }
