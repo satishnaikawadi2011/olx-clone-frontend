@@ -5,27 +5,32 @@ const items = [
 	{
 		src     : 'img/all.jpg',
 		altText : 'Slide 1',
-		caption : 'Online Services'
+		caption : 'Get Help from Our Online Services',
+		header  : 'Online Services'
 	},
 	{
 		src     : 'img/books.jpg',
 		altText : 'Slide 2',
-		caption : 'Buy Your Favourites'
+		caption : 'Buy Your Favourites',
+		header  : 'Books'
 	},
 	{
 		src     : 'img/fashion.jpg',
 		altText : 'Slide 3',
-		caption : 'Show your Passion For Fashion'
+		caption : 'Show your Passion For Fashion',
+		header  : 'Fashion'
 	},
 	{
 		src     : 'img/laptop.jpg',
 		altText : 'Slide 3',
-		caption : ''
+		caption : 'Make Your office Work easy',
+		header  : 'Laptops and Accessories'
 	},
 	{
 		src     : 'img/special-offer.jpg',
 		altText : 'Slide 3',
-		caption : ''
+		caption : '',
+		header  : ''
 	}
 ];
 
@@ -66,7 +71,10 @@ const MyCarousel = (props) => {
 		return (
 			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
 				<img src={item.src} alt={item.altText} className="img-fluid" />
-				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+				<CarouselCaption
+					captionText={<h4 className="text-heading2">{item.caption}</h4>}
+					captionHeader={<h1 className="text-heading1">{item.header}</h1>}
+				/>
 			</CarouselItem>
 		);
 	});

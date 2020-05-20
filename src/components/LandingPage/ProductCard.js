@@ -14,9 +14,7 @@ class ProductCard extends React.Component {
 
 					{/* card footer */}
 					<div className="card-footer">
-						<h4 className="text-center mb-0" style={{ color: 'black' }}>
-							{title}
-						</h4>
+						<h4 className="text-center mb-0 text-dark">{title}</h4>
 					</div>
 				</div>
 			</ProductWrapper>
@@ -26,13 +24,14 @@ class ProductCard extends React.Component {
 
 export default ProductCard;
 const ProductWrapper = styled.div`
-	const ProductWrapper = styled.div .card {
+	.card {
 		border-color: transparent;
 		transition: all 1s linear;
 	}
 	.card-body {
 		background: transparent;
 		border-top: transparent;
+		color: black;
 		transition: all 1s linear;
 	}
 	.card-footer {
@@ -42,12 +41,13 @@ const ProductWrapper = styled.div`
 		.card {
 			border: 0.04rem solid rgb(0, 0, 0, 0.2);
 			box-shadow: 2px 2px 5px 0px rgb(0, 0, 0, 0.2);
+			color: white !important;
 		}
 		.card-footer {
-			background: rgb(2, 9, 8);
+			background-color: rgb(2, 9, 8);
 		}
-		.text-center {
-			color: white;
+		.text-dark {
+			color: var(--mainWhite) !important;
 		}
 	}
 	.card-img-top {
