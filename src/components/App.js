@@ -14,6 +14,9 @@ import HomeEssentials from './sellProducts/homeEssentials';
 import MyNavbar from './LandingPage/MyNavbar';
 import Footer from './LandingPage/Footer';
 import Default from './Default';
+import BuyProducts from './BuyProducts';
+import Login from './Login';
+import Cart from './Cart';
 
 function App() {
 	return (
@@ -22,20 +25,22 @@ function App() {
 			<Router>
 				<Switch>
 					<Route path="/" exact component={LandingPage} />
-					<Route path="/sell/:name" exact />
-					<Route path="/sell" exact component={SellProducts} />
+					<Route path="/buy" component={BuyProducts} />
+					<Route path="/login" component={Login} />
+					<Route path="/cart" component={Cart} />
+					<Route path="/sell" exact component={Mobile} />
 					<Route path="/mobile" component={Mobile} />
 					<Route path="/laptop" component={Laptop} />
 					<Route path="/sports" component={Sports} />
 					<Route path="/homeEssentials" component={HomeEssentials} />
 					<Route path="/cloths" component={Cloths} />
 					<Route path="/kitchen" component={Kitchen} />
-					<Route path="/furnuture" component={Furniture} />
+					<Route path="/furniture" component={Furniture} />
 					<Route path="/books" component={Books} />
 					<Route component={Default} />
 				</Switch>
 			</Router>
-			<Footer />
+			{/* <Footer /> */}
 		</React.Fragment>
 	);
 }
