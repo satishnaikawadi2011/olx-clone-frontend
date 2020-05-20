@@ -1,9 +1,10 @@
 .sidebar-container {
-	position: fixed;
+	position: relative;
 	width: 220px;
 	height: 100%;
-	left: 0;
-	top: 90px;
+	left: -20px;
+	top: -40px;
+	bottom: -20px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	background: #1a1a1a;
@@ -52,6 +53,7 @@
 .sidebar-navigation li a:focus {
 	text-decoration: none;
 	outline: none;
+	background-color: #2574a9;
 }
 
 .sidebar-navigation li::before {
@@ -67,9 +69,9 @@
 	z-index: -1;
 }
 
-.sidebar-navigation li:hover::before {
+/* .sidebar-navigation li:hover::before {
 	width: 100%;
-}
+} */
 
 .sidebar-navigation .header {
 	font-size: 12px;

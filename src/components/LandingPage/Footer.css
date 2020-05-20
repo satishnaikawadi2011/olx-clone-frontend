@@ -26,6 +26,7 @@ footer {
 	position: static;
 	bottom: 0px;
 	width: 100%;
+	border: 5px solid skyblue;
 	background: #111;
 }
 .main-content {
@@ -57,7 +58,7 @@ footer {
 	content: '';
 	height: 2px;
 	width: 15%;
-	background: #f12020;
+	background: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
 	top: -10px;
 }
 .left .content p {
@@ -80,7 +81,7 @@ footer {
 	transition: 0.3s;
 }
 .left .content .social a span:hover {
-	background: #f12020;
+	background: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
 }
 .center .content .fas {
 	font-size: 1.4375rem;
@@ -94,7 +95,7 @@ footer {
 	cursor: pointer;
 }
 .center .content .fas:hover {
-	background: #f12020;
+	background: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
 }
 .center .content .text {
 	font-size: 1.0625rem;
@@ -135,7 +136,7 @@ footer {
 	width: 100%;
 	border: none;
 	outline: none;
-	background: #f12020;
+	background: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
 	font-size: 1.0625rem;
 	font-weight: 500;
 	cursor: pointer;
@@ -153,7 +154,7 @@ footer {
 	color: #656565;
 }
 .bottom center a {
-	color: #f12020;
+	color: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
 	text-decoration: none;
 }
 .bottom center a:hover {

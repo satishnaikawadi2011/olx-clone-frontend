@@ -7,9 +7,11 @@ export default class SideBar extends Component {
 		return (
 			<React.Fragment>
 				<div className="sidebar-container">
-					<div className="sidebar-logo">Project Name</div>
+					<div className="sidebar-logo ">
+						<h4 className="text-heading1">Sell Products</h4>
+					</div>
 					<ul className="sidebar-navigation">
-						<li className="header">Navigation</li>
+						<li className="header">Types</li>
 						<li>
 							<Link to="/mobile">
 								<img src="https://img.icons8.com/color/48/000000/iphone-x.png" /> Mobiles

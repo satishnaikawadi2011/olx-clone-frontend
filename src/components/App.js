@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
 import LandingPage from './LandingPage/LandingPageComponent';
-import SellProducts from './SellProducts';
 import Mobile from './sellProducts/mobile';
 import Laptop from './sellProducts/laptop';
 import Sports from './sellProducts/sports';
@@ -40,7 +39,7 @@ function App() {
 					<Route component={Default} />
 				</Switch>
 			</Router>
-			{/* <Footer /> */}
+			<Footer />
 		</React.Fragment>
 	);
 }

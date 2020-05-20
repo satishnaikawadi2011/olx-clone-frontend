@@ -4,10 +4,18 @@ import SideBar from '../sideBar/SideBar';
 export default class Books extends Component {
 	render() {
 		return (
-			<div>
-				<h1 className="text-heading2 text-center">Books</h1>
-				<SideBar />
-			</div>
+			<React.Fragment>
+				<div className="container-fluid">
+					<div className="row">
+						<div className="col-md-2 col-6">
+							<SideBar />
+						</div>
+						<div className="col-md-10 col-6">
+							<h1 className="text-heading2 text-center">Books</h1>
+						</div>
+					</div>
+				</div>
+			</React.Fragment>
 		);
 	}
 }
