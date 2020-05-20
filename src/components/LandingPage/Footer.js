@@ -20,7 +20,7 @@ export default class Footer extends Component {
 								<a href="#">
 									<img src="https://img.icons8.com/color/48/000000/twitter.png" />
 								</a>
-								<a href="https://instagram.com/coding.np">
+								<a href="https://www.instagram.com/satish_011e/">
 									<img src="https://img.icons8.com/color/48/000000/instagram-new.png" />
 								</a>
 								<a href="https://youtube.com/c/codingnepal">
@@ -48,12 +48,12 @@ export default class Footer extends Component {
 						</div>
 					</div>
 
-					<div class="right box">
+					<div className="right box">
 						<h2>Contact us</h2>
-						<div class="content">
+						<div className="content">
 							<form action="#">
-								<div class="email">
-									<div class="text">Email *</div>
+								<div className="email">
+									<div className="text">Email *</div>
 									<input type="email" required />
 								</div>
 								<div className="msg">
