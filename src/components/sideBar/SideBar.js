@@ -14,43 +14,49 @@ export default class SideBar extends Component {
 						<li className="header">Types</li>
 						<li>
 							<Link to="/mobile">
-								<img src="https://img.icons8.com/color/48/000000/iphone-x.png" /> Mobiles
+								<img src="https://img.icons8.com/color/48/000000/iphone-x.png" /> <span>Mobiles</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/laptop">
-								<img src="https://img.icons8.com/color/48/000000/laptop-e-mail.png" /> Laptops
+								<img src="https://img.icons8.com/color/48/000000/laptop-e-mail.png" />{' '}
+								<span>Laptops</span>
 							</Link>
 						</li>
 						{/* <li class="header">Another Menu</li> */}
 						<li>
 							<Link to="/homeEssentials">
-								<img src="https://img.icons8.com/color/48/000000/fridge.png" />Electronic Appliances
+								<img src="https://img.icons8.com/color/48/000000/fridge.png" />
+								<span>Electronic Appliances</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/kitchen">
-								<img src="https://img.icons8.com/color/48/000000/meal.png" /> Kitchen Essentials
+								<img src="https://img.icons8.com/color/48/000000/meal.png" />{' '}
+								<span>Kitchen Essentials</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/books">
-								<img src="https://img.icons8.com/color/48/000000/books.png" /> Books
+								<img src="https://img.icons8.com/color/48/000000/books.png" /> <span>Books</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/sports">
-								<img src="https://img.icons8.com/color/48/000000/trainers.png" /> Sport
+								<img src="https://img.icons8.com/color/48/000000/trainers.png" />
+								<span> Sport</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/furniture">
-								<img src="https://img.icons8.com/color/48/000000/furniture.png" /> Furniture
+								<img src="https://img.icons8.com/color/48/000000/furniture.png" />{' '}
+								<span>Furniture</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/cloths">
-								<img src="https://img.icons8.com/color/48/000000/doctors-laboratory-coat.png" /> Cloths
+								<img src="https://img.icons8.com/color/48/000000/doctors-laboratory-coat.png" />{' '}
+								<span>Cloths</span>
 							</Link>
 						</li>
 					</ul>

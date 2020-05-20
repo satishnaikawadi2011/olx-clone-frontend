@@ -7,11 +7,11 @@ export default class Sports extends Component {
 			<React.Fragment>
 				<div className="container-fluid">
 					<div className="row">
-						<div className="col-md-2 col-6">
+						<div className="col-md-2 col-2">
 							<SideBar />
 						</div>
-						<div className="col-md-10 col-6">
-							<h1 className="text-heading2 text-center">Mobiles</h1>
+						<div className="col-md-10 col-10">
+							<h1 className="text-heading2 text-center">Sports</h1>
 						</div>
 					</div>
 				</div>
