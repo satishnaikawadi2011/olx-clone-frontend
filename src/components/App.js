@@ -16,6 +16,7 @@ import Default from './Default';
 import BuyProducts from './BuyProducts';
 import Login from './Login';
 import Cart from './Cart';
+import SignUp from './SignUp';
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/" exact component={LandingPage} />
 					<Route path="/buy" component={BuyProducts} />
 					<Route path="/login" component={Login} />
+					<Route path="/signup" component={SignUp} />
 					<Route path="/cart" component={Cart} />
 					<Route path="/sell" exact component={Mobile} />
 					<Route path="/mobile" component={Mobile} />
