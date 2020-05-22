@@ -4,7 +4,21 @@ import { Link } from 'react-router-dom';
 import { FormWrapper } from './styledComponents/FormWrapper';
 
 export default class Login extends Component {
+	handleShow = () => {
+		if (this.inputRef.current.type === 'password') {
+			this.inputRef.current.type = 'text';
+			this.showRef.current.style.color = '#1DA1F2';
+			this.showRef.current.textContent = 'HIDE';
+		}
+		else {
+			this.inputRef.current.type = 'password';
+			this.showRef.current.style.color = '#111';
+			this.showRef.current.textContent = 'SHOW';
+		}
+	};
 	render() {
+		this.inputRef = React.createRef();
+		this.showRef = React.createRef();
 		return (
 			<React.Fragment>
 				<FormWrapper>
@@ -32,7 +46,11 @@ export default class Login extends Component {
 											className="text-black"
 											name="password"
 											autoComplete="off"
+											ref={this.inputRef}
 										/>
+										<span class="show" onClick={this.handleShow} ref={this.showRef}>
+											SHOW
+										</span>
 
 										<label>Password</label>
 									</div>

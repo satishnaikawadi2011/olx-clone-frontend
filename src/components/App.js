@@ -30,14 +30,14 @@ function App() {
 					<Route path="/signup" component={SignUp} />
 					<Route path="/cart" component={Cart} />
 					<Route path="/sell" exact component={Mobile} />
-					<Route path="/mobile" component={Mobile} />
-					<Route path="/laptop" component={Laptop} />
-					<Route path="/sports" component={Sports} />
-					<Route path="/homeEssentials" component={HomeEssentials} />
-					<Route path="/cloths" component={Cloths} />
-					<Route path="/kitchen" component={Kitchen} />
-					<Route path="/furniture" component={Furniture} />
-					<Route path="/books" component={Books} />
+					<Route path="/sell/mobile" component={Mobile} />
+					<Route path="/sell/laptop" component={Laptop} />
+					<Route path="/sell/sports" component={Sports} />
+					<Route path="/sell/homeEssentials" component={HomeEssentials} />
+					<Route path="/sell/cloths" component={Cloths} />
+					<Route path="/sell/kitchen" component={Kitchen} />
+					<Route path="/sell/furniture" component={Furniture} />
+					<Route path="/sell/books" component={Books} />
 					<Route component={Default} />
 				</Switch>
 			</Router>

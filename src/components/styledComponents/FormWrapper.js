@@ -28,6 +28,7 @@ export const FormWrapper = styled.div`
 		margin-top: 100px;
 		margin-bottom: 100px;
 		padding: 60px 40px;
+		border-radius: 20px;
 	}
 	@media only screen and (max-width: 600px) {
 		.container2 {
@@ -59,7 +60,8 @@ export const FormWrapper = styled.div`
 	input:focus {
 		border: 1px solid #1da1f2;
 	}
-	.input-field label {
+	.input-field label,
+	span.show {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -113,6 +115,17 @@ export const FormWrapper = styled.div`
 		font-size: 20px;
 		cursor: pointer;
 		font-family: 'Montserrat', sans-serif;
+	}
+
+	span.show {
+		right: 20px;
+		color: #111;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		user-select: none;
+		visibility: hidden;
+		font-family: 'Open Sans', sans-serif;
 	}
 	.signup {
 		margin-top: 50px;
