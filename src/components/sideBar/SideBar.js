@@ -13,48 +13,48 @@ export default class SideBar extends Component {
 					<ul className="sidebar-navigation">
 						<li className="header">Types</li>
 						<li>
-							<Link to="/mobile">
+							<Link to="/sell/mobile">
 								<img src="https://img.icons8.com/color/48/000000/iphone-x.png" /> <span>Mobiles</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/laptop">
+							<Link to="/sell/laptop">
 								<img src="https://img.icons8.com/color/48/000000/laptop-e-mail.png" />{' '}
 								<span>Laptops</span>
 							</Link>
 						</li>
 						{/* <li class="header">Another Menu</li> */}
 						<li>
-							<Link to="/homeEssentials">
+							<Link to="/sell/homeEssentials">
 								<img src="https://img.icons8.com/color/48/000000/fridge.png" />
 								<span>Electronic Appliances</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/kitchen">
+							<Link to="/sell/kitchen">
 								<img src="https://img.icons8.com/color/48/000000/meal.png" />{' '}
 								<span>Kitchen Essentials</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/books">
+							<Link to="/sell/books">
 								<img src="https://img.icons8.com/color/48/000000/books.png" /> <span>Books</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/sports">
+							<Link to="/sell/sports">
 								<img src="https://img.icons8.com/color/48/000000/trainers.png" />
 								<span> Sport</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/furniture">
+							<Link to="/sell/furniture">
 								<img src="https://img.icons8.com/color/48/000000/furniture.png" />{' '}
 								<span>Furniture</span>
 							</Link>
 						</li>
 						<li>
-							<Link to="/cloths">
+							<Link to="/sell/cloths">
 								<img src="https://img.icons8.com/color/48/000000/doctors-laboratory-coat.png" />{' '}
 								<span>Cloths</span>
 							</Link>

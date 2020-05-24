@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
-
+import styled from 'styled-components';
 const items = [
 	{
 		src     : 'img/all.jpg',
@@ -70,7 +70,7 @@ const MyCarousel = (props) => {
 	const slides = items.map((item) => {
 		return (
 			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
-				<img src={item.src} alt={item.altText} className="img-fluid" />
+				<img style={{ opacity: '0.7' }} src={item.src} alt={item.altText} className="img-fluid" />
 				<CarouselCaption
 					captionText={<h4 className="text-heading2">{item.caption}</h4>}
 					captionHeader={<h1 className="text-heading1">{item.header}</h1>}
@@ -90,3 +90,9 @@ const MyCarousel = (props) => {
 };
 
 export default MyCarousel;
+
+const ImageWrapper = styled.img`
+	::after {
+		background: rgba(0, 0, 0, 0.5);
+	}
+`;
