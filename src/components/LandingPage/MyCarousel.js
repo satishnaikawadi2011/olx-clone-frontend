@@ -90,9 +90,3 @@ const MyCarousel = (props) => {
 };
 
 export default MyCarousel;
-
-const ImageWrapper = styled.img`
-	::after {
-		background: rgba(0, 0, 0, 0.5);
-	}
-`;
