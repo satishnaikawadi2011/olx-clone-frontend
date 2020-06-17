@@ -70,7 +70,12 @@ const MyCarousel = (props) => {
 	const slides = items.map((item) => {
 		return (
 			<CarouselItem onExiting={() => setAnimating(true)} onExited={() => setAnimating(false)} key={item.src}>
-				<img style={{ opacity: '0.7' }} src={item.src} alt={item.altText} className="img-fluid" />
+				<img
+					style={{ opacity: '0.7', height: '90vh' }}
+					src={item.src}
+					alt={item.altText}
+					className="img-fluid"
+				/>
 				<CarouselCaption
 					captionText={<h4 className="text-heading2">{item.caption}</h4>}
 					captionHeader={<h1 className="text-heading1">{item.header}</h1>}

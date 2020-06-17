@@ -6,7 +6,7 @@ export default class SideBar extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="sidebar-container">
+				<div className="sidebar-container mt-5" style={{ overflow: 'hidden' }}>
 					<div className="sidebar-logo ">
 						<h4 className="text-heading1">Sell Products</h4>
 					</div>
@@ -27,13 +27,19 @@ export default class SideBar extends Component {
 						<li>
 							<Link to="/sell/homeEssentials">
 								<img src="https://img.icons8.com/color/48/000000/fridge.png" />
-								<span>Electronic Appliances</span>
+								<span>
+									Electronic <br />
+									<span className="ml-5">Appliances</span>
+								</span>
 							</Link>
 						</li>
 						<li>
 							<Link to="/sell/kitchen">
 								<img src="https://img.icons8.com/color/48/000000/meal.png" />{' '}
-								<span>Kitchen Essentials</span>
+								<span>
+									Kitchen <br />
+									<span className="ml-5">essentials</span>
+								</span>
 							</Link>
 						</li>
 						<li>

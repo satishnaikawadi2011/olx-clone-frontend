@@ -21,8 +21,9 @@ import SignUp from './SignUp';
 function App() {
 	return (
 		<React.Fragment>
-			<MyNavbar />
 			<Router>
+				<MyNavbar />
+
 				<Switch>
 					<Route path="/" exact component={LandingPage} />
 					<Route path="/buy" component={BuyProducts} />

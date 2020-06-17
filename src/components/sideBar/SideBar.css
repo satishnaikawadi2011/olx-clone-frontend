@@ -1,11 +1,11 @@
 .sidebar-container {
 	position: relative;
-	width: 220px;
-	height: 650px;
+	width: 250px;
+	/* height: 650px; */
 	left: -20px;
 	top: -40px;
-	bottom: -20px;
-	overflow-x: hidden;
+	/* bottom: -20px; */
+	overflow-x: auto;
 	overflow-y: auto;
 	background: #1a1a1a;
 	color: #fff;
@@ -88,7 +88,7 @@
 	padding-left: 220px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
 	.sidebar-navigation li span {
 		display: none;
 	}

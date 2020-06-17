@@ -1,0 +1,32 @@
+.my-nav-link {
+	color: yellow;
+	background-color: rgba(0, 0, 0, 0.2);
+	font-size: 1.5rem;
+	display: block;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	margin: 10px;
+	letter-spacing: 2px;
+	white-space: nowrap;
+}
+
+li a.active {
+	color: white;
+	background-color: #e89d14;
+	border: 1px solid black;
+}
+
+li a:hover {
+	color: white;
+	background-color: #e89d14;
+	text-decoration: none;
+	border: 1px solid black;
+}
+span a:hover {
+	text-decoration: none;
+}
+@media only screen and (min-width: 575px) {
+	.my-nav {
+		height: 5rem;
+	}
+}
