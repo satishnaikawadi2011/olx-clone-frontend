@@ -17,10 +17,13 @@ import BuyProducts from './BuyProducts';
 import Login from './Login';
 import Cart from './Cart';
 import SignUp from './SignUp';
+import MyModal from '../components/shared/Modal';
+import { Modal } from 'reactstrap';
 
 function App() {
 	return (
 		<React.Fragment>
+			<MyModal header="error">this is an error message</MyModal>
 			<Router>
 				<MyNavbar />
 

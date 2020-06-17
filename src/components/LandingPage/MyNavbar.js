@@ -80,7 +80,6 @@ export default class MyNavbar extends Component {
 				>
 					<NavbarBrand>
 						<span>
-							{' '}
 							<NavLink to="/">
 								<h2 className="text-heading2 nav-brand">
 									<img

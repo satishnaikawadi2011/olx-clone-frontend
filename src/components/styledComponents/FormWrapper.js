@@ -18,6 +18,7 @@ export const FormWrapper = styled.div`
 		background: white;
 		background-size: cover;
 		background-position: center;
+		z-index: -2;
 	}
 	.container2 {
 		position: relative;
@@ -84,25 +85,26 @@ export const FormWrapper = styled.div`
 		font-size: 16px;
 		color: #33ccff;
 	}
-	form .button {
-		margin-top: 30px;
-		overflow: hidden;
-		z-index: 111;
-	}
-	.button .inner {
-		position: absolute;
-		height: 100%;
-		width: 300%;
-		left: -100%;
-		z-index: -1;
-		transition: all .4s;
-	}
+	// form .button {
+	// 	margin-top: 30px;
+	// 	overflow: hidden;
+	// 	z-index: -1;
+	// }
+	// .button .inner {
+	// 	position: absolute;
+	// 	height: 100%;
+	// 	width: 300%;
+	// 	left: -100%;
+	// 	z-index: -10;
+	// 	transition: all .4s;
+	// }
 	.button:hover .inner {
 		left: 0;
 		background-color: #33ccff;
 	}
 	.button:hover button {
 		color: white;
+		background-color: #33ccff;
 	}
 	.button button {
 		width: 100%;

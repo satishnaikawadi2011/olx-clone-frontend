@@ -2,25 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-class ProductCard extends React.Component {
-	render() {
-		const { img, title, id } = this.props.product;
-		return (
-			<ProductWrapper className="col-9 col-lg-3 mx-auto my-3 col-md-6">
-				<div className="card shadow-lg">
-					<div className="img-container p-5">
-						<img src={img} alt="product" className="card-img-top" />
-					</div>
-
-					{/* card footer */}
-					<div className="card-footer">
-						<h4 className="text-center mb-0 text-dark">{title}</h4>
-					</div>
+const ProductCard = (props) => {
+	const { img, title, id } = props.product;
+	return (
+		<ProductWrapper className="col-9 col-lg-3 mx-auto my-3 col-md-6">
+			<div className="card shadow-lg">
+				<div className="img-container p-5">
+					<img src={img} alt="product" className="card-img-top" />
 				</div>
-			</ProductWrapper>
-		);
-	}
-}
+
+				{/* card footer */}
+				<div className="card-footer">
+					<h4 className="text-center mb-0 text-dark">{title}</h4>
+				</div>
+			</div>
+		</ProductWrapper>
+	);
+};
 
 export default ProductCard;
 const ProductWrapper = styled.div`
