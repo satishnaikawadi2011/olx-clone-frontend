@@ -6,7 +6,7 @@ function TextArea(props) {
 			<label htmlFor={props.name} className="text-black letter-spacing">
 				{props.label}
 			</label>
-			<textarea className="form-control" name={props.name} rows={props.rows} />
+			<textarea className="form-control" name={props.name} rows={props.rows} {...props} />
 			<small className="text-muted letter-spacing">{props.children}</small>
 		</div>
 	);

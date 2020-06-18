@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './MyNavbar.css';
 
+const logoVariant = {
+	hidden  : {
+		y       : '-100vh',
+		opacity : 0
+	},
+	visible : {
+		opacity    : 1,
+		y          : 0,
+		transition : {
+			type      : 'spring',
+			stiffness : 100,
+			delay     : 0.5
+		}
+	}
+};
+const linkVariant = {
+	hidden  : {
+		opacity : 0
+	},
+	visible : {
+		opacity : 1
+	}
+};
 export default class MyNavbar extends Component {
 	state = {
 		isOpen     : false,
@@ -81,12 +105,17 @@ export default class MyNavbar extends Component {
 					<NavbarBrand>
 						<span>
 							<NavLink to="/">
-								<h2 className="text-heading2 nav-brand">
+								<motion.h2
+									className="text-heading2 nav-brand"
+									variants={logoVariant}
+									initial="hidden"
+									animate="visible"
+								>
 									<img
 										src="https://img.icons8.com/color/48/000000/banknotes.png"
 										className="mr-2"
 									/>Meri Dukan
-								</h2>
+								</motion.h2>
 							</NavLink>
 						</span>
 					</NavbarBrand>

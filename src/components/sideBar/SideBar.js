@@ -1,11 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import './SideBar.css';
 import { Link } from 'react-router-dom';
+
+const sidebarVariant = {
+	hidden  : {
+		y : '100vh'
+	},
+	visible : {
+		y          : 0,
+		transition : {
+			type      : 'spring',
+			duration  : 3,
+			stiffness : 20
+		}
+	}
+};
 
 const SideBar = () => {
 	return (
 		<React.Fragment>
-			<div className="sidebar-container mt-5" style={{ overflow: 'hidden' }}>
+			<motion.div
+				className="sidebar-container mt-5"
+				style={{ overflow: 'hidden' }}
+				variants={sidebarVariant}
+				initial="hidden"
+				animate="visible"
+			>
 				<div className="sidebar-logo ">
 					<h4 className="text-heading1">Sell Products</h4>
 				</div>
@@ -63,7 +84,7 @@ const SideBar = () => {
 						</Link>
 					</li>
 				</ul>
-			</div>
+			</motion.div>
 		</React.Fragment>
 	);
 };

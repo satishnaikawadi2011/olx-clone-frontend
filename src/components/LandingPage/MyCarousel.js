@@ -1,6 +1,24 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
+
+const carouselVariant = {
+	hidden  : {
+		x       : '-100vw',
+		opacity : 0
+	},
+	visible : {
+		opacity    : 1,
+		x          : 0,
+		transition : {
+			type      : 'spring',
+			stiffness : 100,
+			delay     : 1
+		}
+	}
+};
+
 const items = [
 	{
 		src     : 'img/all.jpg',
@@ -77,8 +95,26 @@ const MyCarousel = (props) => {
 					className="img-fluid"
 				/>
 				<CarouselCaption
-					captionText={<h4 className="text-heading2">{item.caption}</h4>}
-					captionHeader={<h1 className="text-heading1">{item.header}</h1>}
+					captionText={
+						<motion.h4
+							className="text-heading2"
+							variants={carouselVariant}
+							initial="hidden"
+							animate="visible"
+						>
+							{item.caption}
+						</motion.h4>
+					}
+					captionHeader={
+						<motion.h1
+							className="text-heading1"
+							variants={carouselVariant}
+							initial="hidden"
+							animate="visible"
+						>
+							{item.header}
+						</motion.h1>
+					}
 				/>
 			</CarouselItem>
 		);

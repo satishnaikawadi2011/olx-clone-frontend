@@ -1,7 +1,20 @@
-import React, { Component, useRef } from 'react';
-
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FormWrapper } from './styledComponents/FormWrapper';
+
+const containerVariant = {
+	hidden  : {
+		x : '-100vw'
+	},
+	visible : {
+		x          : 0,
+		transition : {
+			type     : 'spring',
+			duration : 1
+		}
+	}
+};
 
 const Login = () => {
 	const inputRef = useRef();
@@ -22,7 +35,7 @@ const Login = () => {
 	return (
 		<React.Fragment>
 			<FormWrapper>
-				<div className="container">
+				<motion.div className="container" variants={containerVariant} initial="hidden" animate="visible">
 					<div className="row">
 						<div className="col-md-5 offset-md-4 col-sm-8 container2 my-card-shadow">
 							<header className="text-center text-black">Login Form</header>
@@ -67,7 +80,7 @@ const Login = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</FormWrapper>
 		</React.Fragment>
 	);

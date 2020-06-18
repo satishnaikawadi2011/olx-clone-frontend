@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SideBar from '../sideBar/SideBar';
-import Form from './Form';
+import MyForm from './Form';
 
 const HomeEssentials = () => {
 	return (
@@ -12,7 +12,7 @@ const HomeEssentials = () => {
 					</div>
 					<div className="col-md-10 col-10">
 						<h1 className="text-heading2 text-center">Home Appliances</h1>
-						<Form />
+						<MyForm />
 					</div>
 				</div>
 			</div>
