@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 const Default = (props) => {
 	// console.log(this.props)
 	return (

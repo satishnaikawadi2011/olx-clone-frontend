@@ -34,18 +34,20 @@ const SideBar = () => {
 					<li className="header">Types</li>
 					<li>
 						<Link to="/sell/mobile">
-							<img src="https://img.icons8.com/color/48/000000/iphone-x.png" /> <span>Mobiles</span>
+							<img src="https://img.icons8.com/color/48/000000/iphone-x.png" alt="Mobile" />{' '}
+							<span>Mobiles</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/sell/laptop">
-							<img src="https://img.icons8.com/color/48/000000/laptop-e-mail.png" /> <span>Laptops</span>
+							<img src="https://img.icons8.com/color/48/000000/laptop-e-mail.png" alt="Laptop" />{' '}
+							<span>Laptops</span>
 						</Link>
 					</li>
 					{/* <li class="header">Another Menu</li> */}
 					<li>
 						<Link to="/sell/homeEssentials">
-							<img src="https://img.icons8.com/color/48/000000/fridge.png" />
+							<img src="https://img.icons8.com/color/48/000000/fridge.png" alt="Electric Appliances" />
 							<span>
 								Electronic <br />
 								<span className="ml-5">Appliances</span>
@@ -54,7 +56,7 @@ const SideBar = () => {
 					</li>
 					<li>
 						<Link to="/sell/kitchen">
-							<img src="https://img.icons8.com/color/48/000000/meal.png" />{' '}
+							<img src="https://img.icons8.com/color/48/000000/meal.png" alt="Kitchen essentials" />{' '}
 							<span>
 								Kitchen <br />
 								<span className="ml-5">essentials</span>
@@ -63,23 +65,28 @@ const SideBar = () => {
 					</li>
 					<li>
 						<Link to="/sell/books">
-							<img src="https://img.icons8.com/color/48/000000/books.png" /> <span>Books</span>
+							<img src="https://img.icons8.com/color/48/000000/books.png" alt="Books" />{' '}
+							<span>Books</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/sell/sports">
-							<img src="https://img.icons8.com/color/48/000000/trainers.png" />
+							<img src="https://img.icons8.com/color/48/000000/trainers.png" alt="Sports" />
 							<span> Sport</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/sell/furniture">
-							<img src="https://img.icons8.com/color/48/000000/furniture.png" /> <span>Furniture</span>
+							<img src="https://img.icons8.com/color/48/000000/furniture.png" alt="Furniture" />{' '}
+							<span>Furniture</span>
 						</Link>
 					</li>
 					<li>
 						<Link to="/sell/cloths">
-							<img src="https://img.icons8.com/color/48/000000/doctors-laboratory-coat.png" />{' '}
+							<img
+								src="https://img.icons8.com/color/48/000000/doctors-laboratory-coat.png"
+								alt="Cloths"
+							/>{' '}
 							<span>Cloths</span>
 						</Link>
 					</li>

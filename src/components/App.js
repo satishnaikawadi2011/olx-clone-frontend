@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '../App.css';
 import LandingPage from './LandingPage/LandingPageComponent';
@@ -18,16 +18,39 @@ import Login from './Login';
 import Cart from './Cart';
 import SignUp from './SignUp';
 import MyModal from '../components/shared/Modal';
-import { toast } from 'react-toastify';
+import MyMap from '../utils/MyMap';
 
-toast.configure();
 function App() {
+	const [
+		showModal,
+		setShowModal
+	] = useState(false);
+
+	const oprnModalHandler = () => setShowModal(true);
+
+	const closeModalHandler = () => setShowModal(false);
+
+	const cordinates = {
+		latitude  : 19.076,
+		longitude : 72.8777
+	};
 	return (
 		<React.Fragment>
-			{/* <MyModal header="error">this is an error message</MyModal> */}
+			<MyModal
+				show={showModal}
+				header="My Header"
+				onCancel={closeModalHandler}
+				footer={
+					<button className="btn btn-danger" onClick={closeModalHandler}>
+						Close
+					</button>
+				}
+			/>
 			<Router>
 				<MyNavbar />
-
+				<button className="btn btn-primary" onClick={oprnModalHandler}>
+					OPEN MODEL
+				</button>
 				<Switch>
 					<Route path="/" exact component={LandingPage} />
 					<Route path="/buy" component={BuyProducts} />
@@ -43,6 +66,7 @@ function App() {
 					<Route path="/sell/kitchen" component={Kitchen} />
 					<Route path="/sell/furniture" component={Furniture} />
 					<Route path="/sell/books" component={Books} />
+					<Route path="/map" render={(props) => <MyMap {...props} cordinates={cordinates} />} />
 					<Route component={Default} />
 				</Switch>
 			</Router>

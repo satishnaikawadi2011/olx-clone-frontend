@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import styled from 'styled-components';
@@ -9,7 +8,7 @@ const ProductCard = (props) => {
 		Aos.init({ duration: 2000 });
 	}, []);
 
-	const { img, title, id } = props.product;
+	const { img, title } = props.product;
 	return (
 		<ProductWrapper className="col-9 col-lg-3 mx-auto my-3 col-md-6">
 			<div data-aos="flip-right" className="card shadow-lg">

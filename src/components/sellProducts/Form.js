@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Alert from '../shared/Alert';
-import { useFormik, Field } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { motion } from 'framer-motion';
 import Input from '../form/Input';
@@ -50,8 +50,14 @@ const validationSchema = Yup.object({
 	category    : Yup.string().required('Please select category'),
 	brand       : Yup.string().required(' Brand is required'),
 	model       : Yup.string().required('model is required'),
-	title       : Yup.string().required('Title is required').min(150, 'Title should be at least 150 characters'),
-	description : Yup.string().required('Description is required').min(600, 'Title should be at least 600 characters'),
+	title       : Yup.string()
+		.required('Title is required')
+		.min(250, 'Title should be at least 250 characters')
+		.max(350, 'Title should not exceed 350 letters'),
+	description : Yup.string()
+		.required('Description is required')
+		.min(650, 'Title should be at least 650 characters')
+		.max(750, 'Title should not exceed 750 letters'),
 	price       : Yup.number()
 		.required('price is required')
 		.positive('price should be a positive integer')
@@ -62,7 +68,11 @@ const validationSchema = Yup.object({
 	zip         : Yup.number()
 		.required('ZIP Code is required')
 		.positive('zip code should be a positive integer')
-		.integer('Zip code should be a positive integer')
+		.integer('Zip code should be a positive integer'),
+	mobile      : Yup.number()
+		.required('Mobile Number is required for contact information')
+		.positive('mobile number should be a positive integer')
+		.integer('mobile number should be a positive integer')
 	// image       : Yup.object().shape({
 	// 	file : Yup.mixed().required('A product image is required')
 });
@@ -78,7 +88,8 @@ const initialValues = {
 	city        : '',
 	locality    : '',
 	zip         : '',
-	image       : ''
+	image       : '',
+	mobile      : ''
 };
 
 const MyForm = () => {
@@ -192,6 +203,19 @@ const MyForm = () => {
 					{
 						formik.touched.price && formik.errors.price ? <Alert status="danger">
 							{formik.errors.price}
+						</Alert> :
+						null}
+					<Input
+						type="text"
+						label="Contact Info (Mobile Number)"
+						name="mobile"
+						onChange={formik.handleChange}
+						value={formik.values.mobile}
+						onBlur={formik.handleBlur}
+					/>
+					{
+						formik.touched.mobile && formik.errors.mobile ? <Alert status="danger">
+							{formik.errors.mobile}
 						</Alert> :
 						null}
 					<div className="container">

@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -105,10 +103,9 @@ const SignUp = () => {
 								</div>
 								<div className="input-field">
 									<input
-										className="pswrd"
+										className="pswrd text-black"
 										id="pswrd"
 										type="password"
-										className="text-black"
 										name="password"
 										autoComplete="off"
 										ref={inputRef}

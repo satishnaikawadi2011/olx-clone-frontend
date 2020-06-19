@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 
 const carouselVariant = {
 	hidden  : {
@@ -101,6 +100,7 @@ const MyCarousel = (props) => {
 							variants={carouselVariant}
 							initial="hidden"
 							animate="visible"
+							style={{ zIndex: '-1' }}
 						>
 							{item.caption}
 						</motion.h4>
@@ -111,6 +111,7 @@ const MyCarousel = (props) => {
 							variants={carouselVariant}
 							initial="hidden"
 							animate="visible"
+							style={{ zIndex: '-1' }}
 						>
 							{item.header}
 						</motion.h1>

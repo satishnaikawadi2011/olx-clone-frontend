@@ -1,20 +1,46 @@
-.modal-header {
+/* .modal-header {
 	background-color: skyblue;
 	height: 20%;
 }
 .modal-header h1 {
 	font-size: 4rem;
+} */
+
+.modal__header {
+	width: 100%;
+	padding: 1rem 0.5rem;
+	background: linear-gradient(to left, #43cea2 0%, #185a9d 100%);
+}
+
+.modal__header h2 {
+	margin: 0.5rem;
+	text-align: center;
+	font-size: 3rem;
+}
+
+.modal__content {
+	padding: 1rem 0.5rem;
+	font-size: 2rem;
+	color: black;
+}
+
+.modal__footer {
+	padding: 1rem 0.5rem;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
-	.modal-header h1 {
+	.modal__header h2 {
 		font-size: 2rem;
 	}
-	.modal-body p {
+	.modal__content {
 		font-size: 1rem;
 	}
-}
-
-.modal-body {
-	font-size: 2rem;
+	.modal__footer {
+		text-align: center;
+		font-size: 1rem;
+	}
 }

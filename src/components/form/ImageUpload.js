@@ -9,10 +9,10 @@ function ImageUpload(props) {
 		previewUrl,
 		setPreviewUrl
 	] = useState();
-	const [
-		isValid,
-		setIsValid
-	] = useState(false);
+	// const [
+	// 	isValid,
+	// 	setIsValid
+	// ] = useState(false);
 	const filePickedRef = useRef();
 
 	useEffect(
@@ -33,16 +33,14 @@ function ImageUpload(props) {
 
 	const pickedHandler = (event) => {
 		let pickedFile;
-		let fileIsValid = isValid;
+
 		if (event.currentTarget.files && event.currentTarget.files.length === 1) {
 			pickedFile = event.currentTarget.files[0];
 			setFile(pickedFile);
-			setIsValid(true);
-			fileIsValid = true;
+			// setIsValid(true);
 		}
 		else {
-			setIsValid(false);
-			fileIsValid = false;
+			// setIsValid(false);
 		}
 		props.onInput(pickedFile);
 	};

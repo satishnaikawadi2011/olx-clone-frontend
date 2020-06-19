@@ -14,16 +14,16 @@ const Footer = (props) => {
 						</p>
 						<div className="social">
 							<a href="https://facebook.com/coding.np">
-								<img src="https://img.icons8.com/color/48/000000/facebook.png" />
-							</a>
-							<a href="#">
-								<img src="https://img.icons8.com/color/48/000000/twitter.png" />
+								<img src="https://img.icons8.com/color/48/000000/facebook.png" alt="facebook" />
 							</a>
 							<a href="https://www.instagram.com/satish_011e/">
-								<img src="https://img.icons8.com/color/48/000000/instagram-new.png" />
+								<img src="https://img.icons8.com/color/48/000000/twitter.png" alt="twitter" />
+							</a>
+							<a href="https://www.instagram.com/satish_011e/">
+								<img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="instagram" />
 							</a>
 							<a href="https://youtube.com/c/codingnepal">
-								<img src="https://img.icons8.com/color/48/000000/youtube-play.png" />
+								<img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="youtube" />
 							</a>
 						</div>
 					</div>
@@ -33,15 +33,15 @@ const Footer = (props) => {
 					<h2>Address</h2>
 					<div className="content">
 						<div className="place">
-							<img src="https://img.icons8.com/bubbles/50/000000/home-page.png" />
+							<img src="https://img.icons8.com/bubbles/50/000000/home-page.png" alt="home address" />
 							<span className="text">Birendranagar, Surkhet</span>
 						</div>
 						<div className="phone">
-							<img src="https://img.icons8.com/doodle/48/000000/phone--v1.png" />
+							<img src="https://img.icons8.com/doodle/48/000000/phone--v1.png" alt="phone" />
 							<span className="text">+089-765432100</span>
 						</div>
 						<div className="email">
-							<img src="https://img.icons8.com/dusk/48/000000/filled-message.png" />
+							<img src="https://img.icons8.com/dusk/48/000000/filled-message.png" alt="email id" />
 							<span className="text">abc@example.com</span>
 						</div>
 					</div>

@@ -19,14 +19,6 @@ const logoVariant = {
 		}
 	}
 };
-const linkVariant = {
-	hidden  : {
-		opacity : 0
-	},
-	visible : {
-		opacity : 1
-	}
-};
 export default class MyNavbar extends Component {
 	state = {
 		isOpen     : false,
@@ -102,21 +94,22 @@ export default class MyNavbar extends Component {
 					expand="sm"
 					className="my-nav"
 				>
-					<NavbarBrand>
+					<NavbarBrand href="/">
 						<span>
-							<NavLink to="/">
-								<motion.h2
-									className="text-heading2 nav-brand"
-									variants={logoVariant}
-									initial="hidden"
-									animate="visible"
-								>
-									<img
-										src="https://img.icons8.com/color/48/000000/banknotes.png"
-										className="mr-2"
-									/>Meri Dukan
-								</motion.h2>
-							</NavLink>
+							{/* <NavLink to="/"> */}
+							<motion.h2
+								className="text-heading2 nav-brand"
+								variants={logoVariant}
+								initial="hidden"
+								animate="visible"
+							>
+								<img
+									src="https://img.icons8.com/color/48/000000/banknotes.png"
+									className="mr-2"
+									alt="logo"
+								/>Meri Dukan
+							</motion.h2>
+							{/* </NavLink> */}
 						</span>
 					</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
