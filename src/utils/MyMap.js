@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
-import CityPin from './MarkerPin';
 import styles from './MyMap.module.css';
 
 const API_KEY = 'pk.eyJ1Ijoic2F0aXNobmFpa2F3YWRpIiwiYSI6ImNrYm00MnZ1ZzBsdmYycXA5Ynd2YzI0OHYifQ.tGwRK5F47PdiVO6h3gFb5A';

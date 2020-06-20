@@ -2,8 +2,8 @@ import productsModel from './productModel';
 import userModel from './userModel';
 
 const storeModel = {
-	products : productsModel,
-	users    : userModel
+	prod : productsModel,
+	user : userModel
 };
 
 export default storeModel;

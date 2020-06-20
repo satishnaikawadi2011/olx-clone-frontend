@@ -1,8 +1,10 @@
+import { users } from '../dummy-data/data';
+import { action } from 'easy-peasy';
+
 const userModel = {
-	users : [
-		{ id: 1, name: 'satish', age: 19 },
-		{ id: 2, name: 'swaroop', age: 40 }
-	]
+	users : users
+
+	// actions
 };
 
 export default userModel;

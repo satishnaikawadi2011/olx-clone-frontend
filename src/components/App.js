@@ -13,12 +13,13 @@ import HomeEssentials from './sellProducts/homeEssentials';
 import MyNavbar from './LandingPage/MyNavbar';
 import Footer from './LandingPage/Footer';
 import Default from './Default';
-import BuyProducts from './BuyProducts';
 import Login from './Login';
 import Cart from './Cart';
 import SignUp from './SignUp';
 import MyModal from '../components/shared/Modal';
 import MyMap from '../utils/MyMap';
+import SelledProductList from './products/SelledProductList';
+import ProductDetail from './products/ProductDetail';
 
 function App() {
 	const [
@@ -53,7 +54,7 @@ function App() {
 				</button>
 				<Switch>
 					<Route path="/" exact component={LandingPage} />
-					<Route path="/buy" component={BuyProducts} />
+					<Route path="/buy" component={SelledProductList} />
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={SignUp} />
 					<Route path="/cart" component={Cart} />
@@ -67,6 +68,7 @@ function App() {
 					<Route path="/sell/furniture" component={Furniture} />
 					<Route path="/sell/books" component={Books} />
 					<Route path="/map" render={(props) => <MyMap {...props} cordinates={cordinates} />} />
+					<Route path="/detail" component={ProductDetail} />
 					<Route component={Default} />
 				</Switch>
 			</Router>

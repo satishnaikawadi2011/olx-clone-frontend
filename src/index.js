@@ -5,8 +5,6 @@ import storeModel from './easy-peasy/storeModel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './components/App';
 
-// const NodeMediaServer = require('node-media-server');
-
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
 
