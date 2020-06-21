@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
-import { useStoreActions, useStoreState, action } from 'easy-peasy';
+import React from 'react';
+import { useStoreState } from 'easy-peasy';
 import { Button } from '../styledComponents/Button';
 import { Link } from 'react-router-dom';
-import MyMap from '../../utils/MyMap';
 
 function ProductDetail(props) {
 	const product = useStoreState((state) => state.prod.detail);
 
 	const users = useStoreState((state) => state.user.users);
 	const owner = users.find((user) => user.id === product.owner);
-	const cordinates = {
-		latitude  : 19.076,
-		longitude : 72.8777
-	};
-
-	const queryParams = [];
-	for (let i in cordinates) {
-		queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(cordinates[i]));
-	}
-	const queryString = queryParams.join('&');
 	const mapHandler = () => {
 		props.history.push({
-			pathname : '/map',
-			search   : '?' + queryString
+			pathname : '/map'
 		});
 	};
 
 	return (
 		<React.Fragment>
-			<h2 className="my-cursive text-center display-4" style={{ color: 'red', textShadow: '4px 4px 4px black' }}>
+			<h2
+				className="my-cursive text-center display-4 mt-3"
+				style={{ color: 'red', textShadow: '4px 4px 4px black' }}
+			>
 				{product.model}
 			</h2>
 			<div className="container">

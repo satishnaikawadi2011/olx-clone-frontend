@@ -46,7 +46,7 @@ export default class MyNavbar extends Component {
 						</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink to="/products/:userId" className="my-nav-link">
+						<NavLink to="/userProducts" className="my-nav-link">
 							My Products
 						</NavLink>
 					</NavItem>

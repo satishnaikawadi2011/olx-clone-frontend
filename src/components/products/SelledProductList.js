@@ -22,7 +22,7 @@ const SelledProductList = (props) => {
 	return (
 		<React.Fragment>
 			<div className="py-5">
-				<div className="container-fluid">
+				<div className="container">
 					<motion.h2
 						variants={headerVariant}
 						animate="visible"

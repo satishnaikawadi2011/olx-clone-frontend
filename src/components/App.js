@@ -19,6 +19,7 @@ import SignUp from './SignUp';
 import MyMap from '../utils/MyMap';
 import SelledProductList from './products/SelledProductList';
 import ProductDetail from './products/ProductDetail';
+import UserProducts from './products/UserProducts/UserProducts';
 
 function App() {
 	return (
@@ -42,6 +43,7 @@ function App() {
 					<Route path="/sell/books" component={Books} />
 					<Route path="/map" component={MyMap} />
 					<Route path="/detail" component={ProductDetail} />
+					<Route path="/userProducts" component={UserProducts} />
 					<Route component={Default} />
 				</Switch>
 			</Router>

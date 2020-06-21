@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { CardWrapper } from '../styledComponents/CardWapper';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useStoreActions } from 'easy-peasy';
+import styled from 'styled-components';
 
 const cardVariant = {
 	hidden  : {
@@ -13,10 +13,8 @@ const cardVariant = {
 	visible : {
 		x          : 0,
 		transition : {
-			type      : 'spring',
-			duration  : 1,
-			delay     : 2,
-			stiffness : 120
+			type     : 'spring',
+			duration : 1
 		}
 	}
 };
@@ -29,36 +27,84 @@ function SelledProductCard({ product }) {
 	}, []);
 
 	return (
-		<React.Fragment>
-			<CardWrapper className="col-9 col-lg-4 my-3 col-md-6">
-				<Link to="/detail" className="link">
-					<motion.div
-						variants={cardVariant}
-						animate="visible"
-						initial="hidden"
-						className="card mx-auto"
-						data-aos="fade-in"
-						onClick={() => handleDetail(product.id)}
-						whileHover={{
-							scale : 0.9
-						}}
-					>
-						<div className="card_image">
-							<button className="cart-btn">
-								<img src="https://img.icons8.com/nolan/64/favorite-cart.png " alt="Cart" />
-							</button>
-							<img src={product.img} alt="product" />{' '}
-						</div>
+		<ProductWrapper className="col-9 col-lg-4 mx-auto my-3 col-md-6">
+			<motion.div className="card" variants={cardVariant} animate="visible" initial="hidden" data-aos="fade-in">
+				<div className="img-container" onClick={() => handleDetail(product.id)}>
+					<Link to="/detail">
+						<img src={product.img} alt="product" className="card-img-top img" />
 
-						<div className="card_footer">
-							<h4 className="my-cursive">price: Rs{product.price}</h4>
-							<span className="my-cursive">{product.model}</span>
-						</div>
-					</motion.div>
-				</Link>
-			</CardWrapper>
-		</React.Fragment>
+						<button className="cart-btn" onClick={() => handleDetail(product.id)}>
+							<img src="https://img.icons8.com/flat_round/50/000000/info.png" alt="info" />
+						</button>
+					</Link>
+				</div>
+
+				<div className="card-footer d-flex justify-content-between" style={{ fontSize: '1.5rem' }}>
+					<p className="align-self-center mb-0 my-cursive text-dark">{product.model}</p>
+					<h5 className="my-cursive text-dark mb-0" style={{ fontSize: '1.5rem' }}>
+						<span className="mr-1 my-cursive text-dark">Rs</span>
+						{product.price}
+					</h5>
+				</div>
+			</motion.div>
+		</ProductWrapper>
 	);
 }
 
 export default SelledProductCard;
+
+const ProductWrapper = styled.div`
+	.card {
+		border-color: transparent;
+		transition: all 1s linear;
+		box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+	}
+	.card-body {
+		background: transparent;
+		border-top: transparent;
+		transition: all 1s linear;
+	}
+	&:hover {
+		.card {
+			border: 0.04rem solid rgb(0, 0, 0, 0.2);
+			box-shadow: 2px 2px 5px 0px rgb(0, 0, 0, 0.2);
+		}
+		.card-footer {
+			background: rgb(247, 247, 247);
+		}
+		.cart-btn {
+			transform: translate(0, 0);
+			opacity: 1;
+			background-color: rgba(204, 255, 51, 1);
+			box-shadow: 5px 5px 20px 1px rgb(192, 192, 192), -5px -5px 20px 1px rgb(192, 192, 192);
+		}
+	}
+	.card-img-top {
+		transition: all 1s linear;
+	}
+	.cart-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0.2rem 0.4rem;
+		background: transparent;
+		border: none;
+		transform: translate(100%, 0);
+		transition: all 1s linear;
+		opacity: 0;
+		border-radius: 7px 0px 7px 7px;
+	}
+
+	.img {
+		max-width: 100%;
+		height: 350px;
+		vertical-align: middle;
+	}
+	.img-container {
+		position: relative;
+		overflow: hidden;
+	}
+	.img-container:hover .card-img-top {
+		transform: scale(1.2);
+	}
+`;

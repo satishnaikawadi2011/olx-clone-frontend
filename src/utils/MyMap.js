@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import styles from './MyMap.module.css';
 import { Button } from '../components/styledComponents/Button';
