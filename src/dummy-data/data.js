@@ -15,7 +15,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u1'
+		owner       : 'u1',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p2',
@@ -33,7 +35,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u3'
+		owner       : 'u3',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p3',
@@ -51,7 +55,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u1'
+		owner       : 'u1',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p4',
@@ -69,7 +75,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u2'
+		owner       : 'u2',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p5',
@@ -87,7 +95,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u3'
+		owner       : 'u3',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p6',
@@ -105,7 +115,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u1'
+		owner       : 'u1',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p7',
@@ -123,7 +135,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u1'
+		owner       : 'u1',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p8',
@@ -141,7 +155,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u4'
+		owner       : 'u4',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p9',
@@ -159,7 +175,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u3'
+		owner       : 'u3',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	},
 	{
 		id          : 'p10',
@@ -177,7 +195,9 @@ export const products = [
 		locality    : 'matunga',
 		zip         : 415405,
 		contact     : 7829828727,
-		owner       : 'u2'
+		owner       : 'u2',
+		latitude    : 19.076,
+		longitude   : 72.8777
 	}
 ];
 
@@ -197,7 +217,9 @@ export const detailProduct = {
 	locality    : 'matunga',
 	zip         : 415405,
 	contact     : 7829828727,
-	owner       : 'u2'
+	owner       : 'u2',
+	latitude    : 23.0338,
+	longitude   : 68.8777
 };
 
 export const users = [

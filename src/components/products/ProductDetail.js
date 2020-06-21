@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStoreActions, useStoreState, action } from 'easy-peasy';
 import { Button } from '../styledComponents/Button';
 import { Link } from 'react-router-dom';
+import MyMap from '../../utils/MyMap';
 
-function ProductDetail() {
+function ProductDetail(props) {
 	const product = useStoreState((state) => state.prod.detail);
 
 	const users = useStoreState((state) => state.user.users);
 	const owner = users.find((user) => user.id === product.owner);
+	const cordinates = {
+		latitude  : 19.076,
+		longitude : 72.8777
+	};
+
+	const queryParams = [];
+	for (let i in cordinates) {
+		queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(cordinates[i]));
+	}
+	const queryString = queryParams.join('&');
+	const mapHandler = () => {
+		props.history.push({
+			pathname : '/map',
+			search   : '?' + queryString
+		});
+	};
 
 	return (
 		<React.Fragment>
@@ -26,7 +43,7 @@ function ProductDetail() {
 					</div>
 
 					<div className="col-10 col-md-6 mx-auto my-5 text-capitalize">
-						<h2 className="text-heading2">Model : {product.model}</h2>
+						<h2 className="text-heading2 text-white">Model : {product.model}</h2>
 						<h4 className="my-cursive text-muted text-uppercase mb-2 mt-3">made by : {product.brand}</h4>
 						<h4>
 							<strong className="my-cursive text-muted">
@@ -61,7 +78,28 @@ function ProductDetail() {
 				>
 					Owner's Info
 				</h2>
-				<div className="row" />
+				<div className="row">
+					<div className="col-10 col-md-6 mx-auto my-5 text-capitalize text-center">
+						<h2 className="text-heading2 text-primary">Contact Info</h2>
+						<h4 className="my-cursive text-muted">Name : {owner.name}</h4>
+						<h4 className="my-cursive text-muted">email : {owner.email}</h4>
+						<h4 className="my-cursive text-muted">Mobile : {product.contact}</h4>
+					</div>
+					<div className="col-10 col-md-6 mx-auto my-5 text-capitalize text-center">
+						<h2 className="text-heading2 text-primary">Address Info</h2>
+						<h4 className="my-cursive text-muted">State : {product.state}</h4>
+						<h4 className="my-cursive text-muted">City : {product.city}</h4>
+						<h4 className="my-cursive text-muted">nearest locality : {product.locality}</h4>
+						<h4 className="my-cursive text-muted">zip code : {product.zip}</h4>
+					</div>
+				</div>
+				<div className="text-center mb-5">
+					{/* <Link to={'/map/40'}> */}
+					<Button color="#990033" hoverColor="#ff80aa" onClick={mapHandler}>
+						Show Address On Map
+					</Button>
+					{/* </Link> */}
+				</div>
 			</div>
 		</React.Fragment>
 	);

@@ -4,6 +4,17 @@
 	border: none;
 }
 .marker__btn img {
-	height: 20px;
-	width: 20px;
+	height: 30px;
+	width: 30px;
+}
+.container {
+	height: 80vh;
+	width: 80vw;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	margin-right: 10vw;
+	margin-left: 10vw;
+	border: 5px solid orange;
+	border-radius: 50%;
+	overflow: hidden;
 }
