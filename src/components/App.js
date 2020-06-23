@@ -12,16 +12,24 @@ import Furniture from './sellProducts/furniture';
 import HomeEssentials from './sellProducts/homeEssentials';
 import MyNavbar from './LandingPage/MyNavbar';
 import Footer from './LandingPage/Footer';
-import Default from './Default';
-import Login from './Login';
-import Cart from './Cart';
-import SignUp from './SignUp';
+import Default from '../components/auth-forms/Default';
+import Login from '../components/auth-forms/Login';
+import Cart from '../components/user/Cart';
+import SignUp from '../components/auth-forms/SignUp';
 import MyMap from '../utils/MyMap';
 import SelledProductList from './products/SelledProductList';
 import ProductDetail from './products/ProductDetail';
 import UserProducts from './products/UserProducts/UserProducts';
+import UpdateProduct from './products/UserProducts/UpdateProduct';
+import { useStoreActions, useStore } from 'easy-peasy';
 
 function App() {
+	// const add = useStoreActions((actions) => actions.user.handleAuthUser);
+	// add('u1');
+	const store = useStore();
+	// console.log(store.getActions());
+	store.getActions().addToCart('p4');
+
 	return (
 		<React.Fragment>
 			<Router>
@@ -44,6 +52,7 @@ function App() {
 					<Route path="/map" component={MyMap} />
 					<Route path="/detail" component={ProductDetail} />
 					<Route path="/userProducts" component={UserProducts} />
+					<Route path="/update" component={UpdateProduct} />
 					<Route component={Default} />
 				</Switch>
 			</Router>

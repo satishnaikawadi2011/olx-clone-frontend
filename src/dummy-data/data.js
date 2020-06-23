@@ -230,7 +230,8 @@ export const users = [
 		password       : '123456789',
 		selledProducts : [],
 		cart           : [],
-		cartTotal      : 0
+		totalAmount    : 0,
+		totalProducts  : 0
 	},
 	{
 		id             : 'u2',
@@ -239,7 +240,8 @@ export const users = [
 		password       : '123456789',
 		selledProducts : [],
 		cart           : [],
-		cartTotal      : 0
+		totalAmount    : 0,
+		totalProducts  : 0
 	},
 	{
 		id             : 'u3',
@@ -248,7 +250,8 @@ export const users = [
 		password       : '123456789',
 		selledProducts : [],
 		cart           : [],
-		cartTotal      : 0
+		totalAmount    : 0,
+		totalProducts  : 0
 	},
 	{
 		id             : 'u4',
@@ -257,6 +260,7 @@ export const users = [
 		password       : '123456789',
 		selledProducts : [],
 		cart           : [],
-		cartTotal      : 0
+		totalAmount    : 0,
+		totalProducts  : 0
 	}
 ];

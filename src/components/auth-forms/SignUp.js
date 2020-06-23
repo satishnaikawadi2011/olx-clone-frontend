@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { FormWrapper } from './styledComponents/FormWrapper';
+import { FormWrapper } from '../styledComponents/FormWrapper';
 
 const containerVariant = {
 	hidden  : {

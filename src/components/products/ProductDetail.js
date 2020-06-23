@@ -1,18 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStoreState } from 'easy-peasy';
 import { Button } from '../styledComponents/Button';
 import { Link } from 'react-router-dom';
+import { useStore } from 'easy-peasy';
 
 function ProductDetail(props) {
 	const product = useStoreState((state) => state.prod.detail);
 
 	const users = useStoreState((state) => state.user.users);
 	const owner = users.find((user) => user.id === product.owner);
+	const authUserId = useStoreState((state) => state.auth.authUser);
+	const populatedAuthUser = users.find((user) => user.id === authUserId);
 	const mapHandler = () => {
 		props.history.push({
 			pathname : '/map'
 		});
 	};
+	const store = useStore();
+	const addToCartHandler = (id) => {
+		store.getActions().addToCart(id);
+	};
+	const [
+		inCart,
+		setInCart
+	] = useState(false);
+	useEffect(
+		() => {
+			if (populatedAuthUser.cart.filter((prod) => prod.id === product.id).length == 0) {
+				setInCart(false);
+			}
+			else {
+				setInCart(true);
+			}
+		},
+		[
+			product.id,
+			populatedAuthUser.cart
+		]
+	);
 
 	return (
 		<React.Fragment>
@@ -56,8 +81,15 @@ function ProductDetail(props) {
 									Back To Products
 								</Button>
 							</Link>
-							<Button color="#ff0066" hoverColor="#ffb3d9">
-								Add To Cart
+							<Button
+								color="#ff0066"
+								disabled={inCart}
+								hoverColor="#ffb3d9"
+								onClick={() => addToCartHandler(product.id)}
+							>
+								{
+									inCart ? 'In Cart' :
+									'Add To Cart'}
 							</Button>
 						</div>
 					</div>

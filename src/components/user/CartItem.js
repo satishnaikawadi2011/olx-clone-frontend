@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { useStoreActions } from 'easy-peasy';
-import { Link } from 'react-router-dom';
+import { useStoreActions, useStoreState, useStore } from 'easy-peasy';
 
-export default function ProductItem({ product }) {
-	const { id, model, price, img, category } = product;
+export default function CartItem({ product }) {
+	const { id, model, price, img, category, owner } = product;
+	const store = useStore();
+	// const removeProduct = useStoreActions((actions) => actions.prod.removeProduct);
+	const users = useStoreState((state) => state.user.users);
+	const populatedOwner = users.find((user) => user.id === owner);
+	const removeHandler = (id) => {
+		// removeProduct(id);
 
-	const removeProduct = useStoreActions((actions) => actions.prod.removeProduct);
-	const deleteHandler = (id) => {
-		removeProduct(id);
+		store.getActions().removeFromCart(id);
 	};
 	return (
 		<React.Fragment>
 			<div className="row my-1 text-capitalize text-center mb-3">
 				<div className="col-10 col-lg-2 mx-auto">
-					<img src={img} alt="product" className="img-fluid" style={{ height: '5rem', width: '5rem' }} />
+					<img src={img} alt="product" className="img-fluid" style={{ height: '7rem', width: '7rem' }} />
 				</div>
 				<div className="col-10 col-lg-2 mx-auto  text-muted h4">
 					<span className="d-lg-none text-danger">category : </span>
@@ -29,23 +32,13 @@ export default function ProductItem({ product }) {
 				</div>
 
 				<div className="col-10 col-lg-2 mx-auto text-muted h4">
-					<div style={{ cursor: 'pointer' }} onClick={() => deleteHandler(id)}>
+					<div style={{ cursor: 'pointer' }} onClick={() => removeHandler(id)}>
 						<img src="https://img.icons8.com/nolan/64/waste.png" alt="delete" />
 					</div>
 				</div>
 				<div className="col-10 col-lg-2 mx-auto text-muted h4">
-					<div style={{ cursor: 'pointer' }}>
-						<Link
-							to={{
-								pathname : '/update',
-								state    : {
-									product
-								}
-							}}
-						>
-							<img src="https://img.icons8.com/nolan/64/approve-and-update.png" alt="update" />
-						</Link>
-					</div>
+					<span className="d-lg-none text-danger">owner's email : </span>
+					{populatedOwner.email}
 				</div>
 			</div>
 			<div className="d-lg-none" style={{ border: '2px solid red' }} />

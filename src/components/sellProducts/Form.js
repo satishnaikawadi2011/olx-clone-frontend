@@ -8,6 +8,7 @@ import Input from '../form/Input';
 import TextArea from '../form/TextArea';
 import ImageUpload from '../form/ImageUpload';
 import MySelect from '../form/MySelect';
+import { useStoreActions } from 'easy-peasy';
 
 const options = [
 	'Mobile',
@@ -97,8 +98,16 @@ const MyForm = () => {
 		// console.log(file);
 		formik.setFieldValue('image', file, false);
 	};
+	const addProduct = useStoreActions((actions) => actions.prod.addProduct);
 	const onSubmitHandler = (values) => {
-		console.log(values);
+		const product = {
+			...values,
+			id        : 'p15',
+			latitude  : 17.0589486,
+			longitude : 73.9612915,
+			owner     : 'u1'
+		};
+		addProduct(product);
 		// let finalValues = { ...values, image: { ...myfile } };
 	};
 
@@ -161,16 +170,17 @@ const MyForm = () => {
 							{formik.errors.model}
 						</Alert> :
 						null}
-					<Input
+					<TextArea
 						label="Title"
 						name="title"
-						placeholder="Add title"
-						type="text"
+						placeholder="Add Key Features"
+						rows="4"
 						onChange={formik.handleChange}
 						value={formik.values.title}
 						onBlur={formik.handleBlur}
-						helperText="Mention the key features of your item (e.g. brand, model, age, type)"
-					/>
+					>
+						Mention the key features of your item (e.g. brand, model, age, type)
+					</TextArea>
 					{
 						formik.touched.title && formik.errors.title ? <Alert status="danger">
 							{formik.errors.title}

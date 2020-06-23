@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FormWrapper } from './styledComponents/FormWrapper';
+import { FormWrapper } from '../styledComponents/FormWrapper';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
