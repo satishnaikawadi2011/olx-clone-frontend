@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FormWrapper } from '../styledComponents/FormWrapper';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import ErrorModal from '../shared/ErrorModal';
+import { loginUser } from '../../redux/actions/userActions';
+import { connect } from 'react-redux';
 
 const containerVariant = {
 	hidden  : {
@@ -18,9 +21,27 @@ const containerVariant = {
 	}
 };
 
-const Login = () => {
+const Login = (props) => {
+	const { loading, errors } = props.UI;
+	const [
+		error,
+		setError
+	] = useState(null);
+	useEffect(
+		() => {
+			if (errors) {
+				setError(errors);
+			}
+		},
+		[
+			errors
+		]
+	);
+	const clearError = () => {
+		setError(null);
+	};
 	const onSubmitHandler = (values) => {
-		console.log(values);
+		props.loginUser(values, props.history);
 	};
 
 	const formik = useFormik({
@@ -53,73 +74,86 @@ const Login = () => {
 			showRef.current.textContent = 'SHOW';
 		}
 	};
-	return (
-		<React.Fragment>
-			<FormWrapper>
-				<motion.div className="container" variants={containerVariant} initial="hidden" animate="visible">
-					<div className="row">
-						<div className="col-md-5 offset-md-4 col-sm-8 container2 my-card-shadow">
-							<header className="text-center text-black">Login Form</header>
-							<form onSubmit={formik.handleSubmit}>
-								<div className="input-field">
-									<input
-										type="text"
-										className="text-black"
-										name="email"
-										autoComplete="off"
-										onChange={formik.handleChange}
-										value={formik.values.email}
-										onBlur={formik.handleBlur}
-									/>
-									{
-										formik.touched.email &&
-										formik.errors
-											.email ? <div className="text-white text-center font-weight-bolder letter-spacing">
-											{formik.errors.email}
-										</div> :
-										null}
-									<label>Email</label>
+	if (error) {
+		return <ErrorModal error={error} onCancel={clearError} />;
+	}
+	else if (loading) {
+		return <div className="text-black display-4">Loading...</div>;
+	}
+	else {
+		return (
+			<React.Fragment>
+				<FormWrapper>
+					<motion.div className="container" variants={containerVariant} initial="hidden" animate="visible">
+						<div className="row">
+							<div className="col-md-5 offset-md-4 col-sm-8 container2 my-card-shadow">
+								<header className="text-center text-black">Login Form</header>
+								<form onSubmit={formik.handleSubmit}>
+									<div className="input-field">
+										<input
+											type="text"
+											className="text-black"
+											name="email"
+											autoComplete="off"
+											onChange={formik.handleChange}
+											value={formik.values.email}
+											onBlur={formik.handleBlur}
+										/>
+										{
+											formik.touched.email &&
+											formik.errors
+												.email ? <div className="text-white text-center font-weight-bolder letter-spacing">
+												{formik.errors.email}
+											</div> :
+											null}
+										<label>Email</label>
+									</div>
+									<div className="input-field">
+										<input
+											className="pswrd text-black"
+											id="pswrd"
+											type="passwor"
+											name="password"
+											autoComplete="off"
+											onChange={formik.handleChange}
+											value={formik.values.password}
+											onBlur={formik.handleBlur}
+											ref={inputRef}
+										/>
+										<span className="show" onClick={handleShow} ref={showRef}>
+											SHOW
+										</span>
+										{
+											formik.touched.password &&
+											formik.errors
+												.password ? <div className="text-white text-center font-weight-bolder letter-spacing">
+												{formik.errors.password}
+											</div> :
+											null}
+										<label>Password</label>
+									</div>
+									<div className="button">
+										<div className="inner" />
+										<button>LOGIN</button>
+									</div>
+								</form>
+								<div className="signup text-center">
+									Not a member?{' '}
+									<Link to="/signup" style={{ color: '#33ccff' }}>
+										Signup now
+									</Link>
 								</div>
-								<div className="input-field">
-									<input
-										className="pswrd text-black"
-										id="pswrd"
-										type="passwor"
-										name="password"
-										autoComplete="off"
-										onChange={formik.handleChange}
-										value={formik.values.password}
-										onBlur={formik.handleBlur}
-										ref={inputRef}
-									/>
-									<span className="show" onClick={handleShow} ref={showRef}>
-										SHOW
-									</span>
-									{
-										formik.touched.password &&
-										formik.errors
-											.password ? <div className="text-white text-center font-weight-bolder letter-spacing">
-											{formik.errors.password}
-										</div> :
-										null}
-									<label>Password</label>
-								</div>
-								<div className="button">
-									<div className="inner" />
-									<button>LOGIN</button>
-								</div>
-							</form>
-							<div className="signup text-center">
-								Not a member?{' '}
-								<Link to="/signup" style={{ color: '#33ccff' }}>
-									Signup now
-								</Link>
 							</div>
 						</div>
-					</div>
-				</motion.div>
-			</FormWrapper>
-		</React.Fragment>
-	);
+					</motion.div>
+				</FormWrapper>
+			</React.Fragment>
+		);
+	}
 };
-export default Login;
+
+const mapStateToProps = (state) => ({
+	UI : state.UI
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);

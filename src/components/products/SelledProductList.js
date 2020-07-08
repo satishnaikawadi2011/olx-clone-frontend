@@ -1,5 +1,6 @@
-import React from 'react';
-import { useStoreState } from 'easy-peasy';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getProducts } from '../../redux/actions/dataActions';
 import SelledProductCard from './SelledProductCard';
 import { motion } from 'framer-motion';
 
@@ -17,30 +18,41 @@ const headerVariant = {
 };
 
 const SelledProductList = (props) => {
-	const products = useStoreState((state) => state.prod.products);
-	// console.log(products.products);
-	return (
-		<React.Fragment>
-			<div className="py-5">
-				<div className="container">
-					<motion.h2
-						variants={headerVariant}
-						animate="visible"
-						initial="hidden"
-						className="text-heading2 text-center"
-						style={{ fontSize: '3rem' }}
-					>
-						Happy Shopping
-					</motion.h2>
-					<div className="row">
-						{products.map((product) => {
-							return <SelledProductCard key={product.id} product={product} />;
-						})}
+	const { products, loading } = props.data;
+	useEffect(() => {
+		props.getProducts();
+	}, []);
+	if (loading) {
+		return <p>Loading...</p>;
+	}
+	else {
+		return (
+			<React.Fragment>
+				<div className="py-5">
+					<div className="container">
+						<motion.h2
+							variants={headerVariant}
+							animate="visible"
+							initial="hidden"
+							className="text-heading2 text-center"
+							style={{ fontSize: '3rem' }}
+						>
+							Happy Shopping
+						</motion.h2>
+						<div className="row">
+							{products.map((product) => {
+								return <SelledProductCard key={product._id} product={product} />;
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
-		</React.Fragment>
-	);
+			</React.Fragment>
+		);
+	}
 };
 
-export default SelledProductList;
+const mapStateToProps = (state) => ({
+	data : state.data
+});
+
+export default connect(mapStateToProps, { getProducts })(SelledProductList);

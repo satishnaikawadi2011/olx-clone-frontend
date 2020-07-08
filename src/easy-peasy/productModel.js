@@ -1,12 +1,29 @@
 import { products, detailProduct } from '../dummy-data/data';
-import { action } from 'easy-peasy';
+import { action, thunk } from 'easy-peasy';
 import { changeArray } from '../helpers/updateArray';
+import axios from 'axios';
 
 const productModel = {
-	products      : products,
+	products      : [],
 	detail        : detailProduct,
 
+	//thunk
+	fetchProducts : thunk((actions, payload) => {
+		axios
+			.get('http://localhost:5000/api/products')
+			.then((res) => {
+				actions.setProducts(res.data.products);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}),
+
 	// actions
+	setProducts   : action((state, products) => {
+		state.products = products;
+	}),
+
 	removeProduct : action((state, payload) => {
 		state.products = state.products.filter((product) => product.id !== payload);
 	}),
@@ -16,7 +33,7 @@ const productModel = {
 	}),
 
 	handleDetail  : action((state, payload) => {
-		const product = state.products.find((product) => product.id === payload);
+		const product = state.products.find((product) => product._id === payload);
 		state.detail = product;
 	}),
 	updateProduct : action((state, payload) => {

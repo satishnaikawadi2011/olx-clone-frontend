@@ -10,8 +10,10 @@ export const Button = styled.button`
 	border-radius: 0.5rem;
 	padding: 0.2rem 0.5rem;
 	cursor: pointer;
-	margin: 0.2rem 0.5rem 0.2rem 0;
+	margin: ${(props) => props.margin};
 	transition: all 0.5s ease-in-out;
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
 	&:hover {
 		background: ${(props) => props.color};
 		color: ${(props) => props.hoverColor};

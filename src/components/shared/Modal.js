@@ -1,60 +1,37 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal';
-import './Modal.css';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-Modal.setAppElement('#root');
 const MyModal = (props) => {
+	const { buttonLabel, className } = props;
+
 	// const [
-	// 	isModalOpen,
-	// 	setIsModalOpen
-	// ] = useState(props.show);
+	// 	modal,
+	// 	setModal
+	// ] = useState(false);
 
-	// const onCancelHandler = () => {
-	// 	setIsModalOpen(!isModalOpen);
-	// };
+	// const toggle = () => setShow(!props.show);
+
 	return (
-		<Modal
-			isOpen={props.show}
-			onRequestClose={props.onCancel}
-			{...props.footer}
-			className="modal-content"
-			// overlayClassName="modal-overlay"
-			style={{
-				overlay : { backgroundColor: 'grey', zIndex: '1000' },
-				content : {
-					position    : 'relative',
-					top         : '50%',
-					left        : '50%',
-					marginRight : '-50%',
-					transform   : 'translate(-50%, -50%)',
-					height      : '70%',
-					width       : '50%',
-					zIndex      : '10000'
-				}
-			}}
-		>
-			<header className={`modal__header ${props.headerClass}`}>
-				<h2 className="text-heading2">{props.header}</h2>
-			</header>
-			<form
-				onSubmit={
-
-						props.onSubmit ? props.onSubmit :
-						(event) => event.preventDefault()
-				}
-			>
-				<div className={`modal__content ${props.contentClass}`}>{props.children}</div>
-				<div className={`modal__footer ${props.footerClass}`}>{props.footer}</div>
-			</form>
-			{/* <div className="modal-header letter-spacing">
-				<h2 className="text-black" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-					{props.header}
-				</h2>
-			</div>
-			<div className="mt-3 ml-2 mr-2 letter-spacing modal-body">
-				<p className="text-black">{props.children}</p>
-			</div> */}
-		</Modal>
+		<div>
+			<Modal isOpen={props.show} toggle={props.toggle} className={className}>
+				<ModalHeader className={props.headerBg} style={{ color: 'black' }} toggle={props.toggle}>
+					{<span className={props.headerText}>{props.header}</span>}
+				</ModalHeader>
+				<ModalBody className={props.bodyClass}>{props.body}</ModalBody>
+				<ModalFooter>
+					{props.submit && (
+						<Button color="success" onClick={props.onSubmit}>
+							{props.submit}
+						</Button>
+					)}
+					{props.cancel && (
+						<Button color="danger" onClick={props.onCancel}>
+							{props.cancel}
+						</Button>
+					)}
+				</ModalFooter>
+			</Modal>
+		</div>
 	);
 };
 

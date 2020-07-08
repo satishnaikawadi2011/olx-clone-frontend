@@ -1,8 +1,15 @@
 import React from 'react';
 import SideBar from '../sideBar/SideBar';
 import MyForm from './Form';
+import { Redirect } from 'react-router-dom';
+import { useStore } from 'easy-peasy';
 
 const Kitchen = () => {
+	const store = useStore();
+	const isLoggedIn = store.getState().auth.isLoggedIn;
+	if (!isLoggedIn) {
+		return <Redirect to="/" />;
+	}
 	return (
 		<div>
 			<div className="container-fluid">

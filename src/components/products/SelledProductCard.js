@@ -3,7 +3,8 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useStoreActions } from 'easy-peasy';
+import { connect } from 'react-redux';
+import { getProduct } from '../../redux/actions/dataActions';
 import styled from 'styled-components';
 
 const cardVariant = {
@@ -19,21 +20,29 @@ const cardVariant = {
 	}
 };
 
-function SelledProductCard({ product }) {
-	const handleDetail = useStoreActions((actions) => actions.prod.handleDetail);
-
+function SelledProductCard(props) {
+	const { product } = props;
 	useEffect(() => {
 		Aos.init({ duration: 2000 });
 	}, []);
-
+	const handleDetail = (id) => {
+		props.getProduct(id);
+	};
 	return (
 		<ProductWrapper className="col-9 col-lg-4 mx-auto my-3 col-md-6">
 			<motion.div className="card" variants={cardVariant} animate="visible" initial="hidden" data-aos="fade-in">
-				<div className="img-container" onClick={() => handleDetail(product.id)}>
-					<Link to="/detail">
-						<img src={product.img} alt="product" className="card-img-top img" />
+				<div className="img-container" onClick={() => handleDetail(product._id)}>
+					<Link
+						to={{
+							pathname : `/detail/${product._id}`,
+							state    : {
+								id : product._id
+							}
+						}}
+					>
+						<img src={product.image} alt="product" className="card-img-top img" />
 
-						<button className="cart-btn" onClick={() => handleDetail(product.id)}>
+						<button className="cart-btn" onClick={() => handleDetail(product._id)}>
 							<img src="https://img.icons8.com/flat_round/50/000000/info.png" alt="info" />
 						</button>
 					</Link>
@@ -51,7 +60,7 @@ function SelledProductCard({ product }) {
 	);
 }
 
-export default SelledProductCard;
+export default connect(null, { getProduct })(SelledProductCard);
 
 const ProductWrapper = styled.div`
 	.card {

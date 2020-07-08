@@ -1,44 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { useStoreState } from 'easy-peasy';
 import { Button } from '../styledComponents/Button';
-import { Link } from 'react-router-dom';
-import { useStore } from 'easy-peasy';
+import { Link, useLocation, useParams, Redirect } from 'react-router-dom';
+import ErrorModal from '../shared/ErrorModal';
+import { connect } from 'react-redux';
+import { getProduct } from '../../redux/actions/dataActions';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 function ProductDetail(props) {
-	const product = useStoreState((state) => state.prod.detail);
-
-	const users = useStoreState((state) => state.user.users);
-	const owner = users.find((user) => user.id === product.owner);
-	const authUserId = useStoreState((state) => state.auth.authUser);
-	const populatedAuthUser = users.find((user) => user.id === authUserId);
+	useEffect(() => {
+		props.getProduct(props.match.params.id);
+	}, []);
+	const { product } = props;
+	// console.log(product.owner);
 	const mapHandler = () => {
 		props.history.push({
 			pathname : '/map'
 		});
 	};
-	const store = useStore();
-	const addToCartHandler = (id) => {
-		store.getActions().addToCart(id);
-	};
+	const addToCartHandler = (id) => {};
+	// 	setIsLoading(true);
+	// 	Axios.post(`http://localhost:5000/api/products/me/addToCart/${id}`, null, {
+	// 		headers : {
+	// 			Authorization : 'Bearer ' + token
+	// 		}
+	// 	})
+	// 		.then((res) => setIsLoading(false))
+	// 		.catch((err) => {
+	// 			setIsLoading(false);
+	// 			setError(err.response.data.message || 'An Unknown error occured!');
+	// 			// console.log(error);
+	// 		});
+	// };
 	const [
 		inCart,
 		setInCart
 	] = useState(false);
-	useEffect(
-		() => {
-			if (populatedAuthUser.cart.filter((prod) => prod.id === product.id).length == 0) {
-				setInCart(false);
-			}
-			else {
-				setInCart(true);
-			}
-		},
-		[
-			product.id,
-			populatedAuthUser.cart
-		]
-	);
 
+	// const isLoggedIn = store.getState().auth.isLoggedIn;
+	// if (!isLoggedIn) {
+	// 	return <Redirect to="/" />;
+	// }
+
+	// if (error) {
+	// 	return <ErrorModal error={error} onCancel={clearError} />;
+	// }
+	// else if (isLoading) {
+	// 	return <LoadingSpinner />;
+	// }
+	// else {
 	return (
 		<React.Fragment>
 			<h2
@@ -51,7 +60,7 @@ function ProductDetail(props) {
 				<div className="row">
 					<div className="col-10 col-md-6 mx-auto my-5 d-flex justify-content-center">
 						<img
-							src={product.img}
+							src={product.image}
 							className=" mt-4"
 							alt="Product"
 							style={{ height: '70vh', width: '90%', marginBottom: '10%', scale: 0.5 }}
@@ -85,7 +94,7 @@ function ProductDetail(props) {
 								color="#ff0066"
 								disabled={inCart}
 								hoverColor="#ffb3d9"
-								onClick={() => addToCartHandler(product.id)}
+								onClick={() => addToCartHandler(product._id)}
 							>
 								{
 									inCart ? 'In Cart' :
@@ -104,8 +113,13 @@ function ProductDetail(props) {
 				<div className="row">
 					<div className="col-10 col-md-6 mx-auto my-5 text-capitalize text-center">
 						<h2 className="text-heading2 text-primary">Contact Info</h2>
-						<h4 className="my-cursive text-muted">Name : {owner.name}</h4>
-						<h4 className="my-cursive text-muted">email : {owner.email}</h4>
+						{product.owner && (
+							<React.Fragment>
+								{' '}
+								<h4 className="my-cursive text-muted">Name : {product.owner.name}</h4>
+								<h4 className="my-cursive text-muted">email : {product.owner.email}</h4>
+							</React.Fragment>
+						)}
 						<h4 className="my-cursive text-muted">Mobile : {product.contact}</h4>
 					</div>
 					<div className="col-10 col-md-6 mx-auto my-5 text-capitalize text-center">
@@ -117,15 +131,47 @@ function ProductDetail(props) {
 					</div>
 				</div>
 				<div className="text-center mb-5">
-					{/* <Link to={'/map/40'}> */}
-					<Button color="#990033" hoverColor="#ff80aa" onClick={mapHandler}>
-						Show Address On Map
-					</Button>
-					{/* </Link> */}
+					<Link
+						to={{
+							pathname : `/map/${product._id}`,
+							state    : {
+								id : product._id
+							}
+						}}
+					>
+						<Button color="#990033" hoverColor="#ff80aa">
+							Show Address On Map
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</React.Fragment>
 	);
 }
 
-export default ProductDetail;
+// useEffect(
+// 	() => {
+// 		if (populatedAuthUser.cart.filter((prod) => prod.id === product.id).length == 0) {
+// 			setInCart(false);
+// 		}
+// 		else {
+// 			setInCart(true);
+// 		}
+// 	},
+// 	[
+// 		product.id,
+// 		populatedAuthUser.cart
+// 	]
+// );
+// return (
+// 	<React.Fragment>
+// 		{
+// 			isLoading ? <h2 className="text-dark">Loading....</h2> :
+// 			content()}
+// 	</React.Fragment>
+// );
+const mapStateToProps = (state) => ({
+	product : state.data.product
+});
+
+export default connect(mapStateToProps, { getProduct })(ProductDetail);
