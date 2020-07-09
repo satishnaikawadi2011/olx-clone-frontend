@@ -6,9 +6,8 @@ import { useFormik } from 'formik';
 import Alert from '../../shared/Alert';
 import * as Yup from 'yup';
 import { motion } from 'framer-motion';
-import { useStoreActions, useStoreState, useStore } from 'easy-peasy';
-import axios from 'axios';
-import LoadingSpinner from '../../shared/LoadingSpinner';
+import { updateMyProduct, clearErrors } from '../../../redux/actions/userActions';
+import { connect } from 'react-redux';
 import ErrorModal from '../../shared/ErrorModal';
 
 const formVariant = {
@@ -24,46 +23,30 @@ const formVariant = {
 	}
 };
 
-function UpdateProduct() {
+function UpdateProduct(props) {
+	const { loading, errors } = props.UI;
 	const location = useLocation();
 	const { title, description, contact, state, city, locality, zip, _id } = location.state.product;
-	const store = useStore();
-	const [
-		isLoading,
-		setIsLoading
-	] = useState(false);
 	const [
 		error,
 		setError
 	] = useState(null);
 	const clearError = () => {
 		setError(null);
+		props.clearErrors();
 	};
-
-	const token = store.getState().auth.token;
+	useEffect(
+		() => {
+			if (errors) {
+				setError(errors);
+			}
+		},
+		[
+			errors
+		]
+	);
 	const onSubmitHandler = (values) => {
-		console.log(values);
-		setIsLoading(true);
-		axios
-			.patch(
-				`http://localhost:5000/api/products/${_id}`,
-				{ ...values },
-				{
-					headers : {
-						Authorization : 'Bearer ' + token
-					}
-				}
-			)
-			.then((res) => {
-				setIsLoading(false);
-			})
-			.catch((err) => {
-				setIsLoading(false);
-				if (err.response) {
-					return setError(err.response.data.message || 'An Unknown error occured!');
-				}
-				setError('An Unknown error occured');
-			});
+		props.updateMyProduct(_id, values);
 	};
 
 	const initialValues = {
@@ -103,16 +86,8 @@ function UpdateProduct() {
 		validationSchema : validationSchema,
 		onSubmit         : onSubmitHandler
 	});
-	const user = store.getState().auth.user;
-	const isLoggedIn = store.getState().auth.isLoggedIn;
-	if (!isLoggedIn) {
-		return <Redirect to="/" />;
-	}
 	if (error) {
 		return <ErrorModal error={error} onCancel={clearError} />;
-	}
-	else if (isLoading) {
-		return <LoadingSpinner />;
 	}
 	else {
 		return (
@@ -238,4 +213,8 @@ function UpdateProduct() {
 	}
 }
 
-export default UpdateProduct;
+const mapStateToProps = (state) => ({
+	UI : state.UI
+});
+
+export default connect(mapStateToProps, { updateMyProduct })(UpdateProduct);

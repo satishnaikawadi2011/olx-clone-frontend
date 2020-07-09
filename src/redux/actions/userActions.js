@@ -7,7 +7,13 @@ import {
 	SET_CART,
 	SET_SELLED_PRODUCTS,
 	SET_UNAUTHENTICATED,
-	SET_AUTHENTICATED
+	SET_AUTHENTICATED,
+	ADD_PROUCT_TO_CART,
+	STOP_LOADING_UI,
+	REMOVE_PRODUCT_FROM_CART,
+	CLEAR_CART,
+	DELETE_PRODUCT,
+	UPDATE_PRODUCT
 } from '../types';
 import axios from 'axios';
 
@@ -73,7 +79,7 @@ export const getMyCart = () => (dispatch) => {
 	axios
 		.get(`/products/me/cart`)
 		.then((res) => {
-			dispatch({ type: SET_CART, payload: res.data });
+			dispatch({ type: SET_CART, payload: res.data.cart });
 		})
 		.catch((err) => {
 			console.log(err);
@@ -90,6 +96,68 @@ export const getMySelledProducts = () => (dispatch) => {
 		.catch((err) => {
 			console.log(err);
 		});
+};
+
+export const addToCart = (id) => (dispatch) => {
+	axios
+		.post(`/products/me/addToCart/${id}`)
+		.then((res) => {
+			dispatch({ type: ADD_PROUCT_TO_CART, payload: res.data.product });
+			dispatch({ type: CLEAR_ERRORS });
+		})
+		.catch((err) => {
+			dispatch({ type: SET_ERRORS, payload: err.response.data.message });
+		});
+};
+
+export const removeFromCart = (id) => (dispatch) => {
+	axios
+		.delete(`/products/me/removeFromCart/${id}`)
+		.then((res) => {
+			dispatch({ type: REMOVE_PRODUCT_FROM_CART, payload: res.data.product });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+export const clearCart = () => (dispatch) => {
+	axios
+		.delete(`/products/me/cart/clear`)
+		.then(() => {
+			dispatch({ type: CLEAR_CART });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+export const deleteMyProduct = (id) => (dispatch) => {
+	axios
+		.delete(`/products/${id}`)
+		.then((res) => {
+			dispatch({ type: DELETE_PRODUCT, payload: id });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+export const updateMyProduct = (id, data) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.patch(`/products/${id}`, data)
+		.then((res) => {
+			dispatch({ type: UPDATE_PRODUCT, payload: res.data.product });
+			dispatch({ type: STOP_LOADING_UI });
+		})
+		.catch((err) => {
+			dispatch({ type: SET_ERRORS, payload: err.response.data.message });
+		});
+};
+
+export const clearErrors = () => (dispatch) => {
+	dispatch({ type: CLEAR_ERRORS });
 };
 
 const setAuthorizationHeader = (token) => {

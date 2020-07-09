@@ -9,7 +9,8 @@ import {
 	DELETE_PRODUCT,
 	UPLOAD_PRODUCT,
 	SET_CART,
-	SET_SELLED_PRODUCTS
+	SET_SELLED_PRODUCTS,
+	UPDATE_PRODUCT
 } from '../types';
 
 const initialState = {
@@ -58,6 +59,47 @@ export default function(state = initialState, action) {
 				...state,
 				selledProducts : action.payload,
 				loading        : false
+			};
+		case ADD_PROUCT_TO_CART:
+			return {
+				...state,
+				cart     : [
+					action.payload,
+					...state.cart
+				],
+				loading  : false,
+				userData : {
+					...state.userData,
+					totalAmount   : state.userData.totalAmount + action.payload.price,
+					totalProducts : state.userData.totalProducts + 1
+				}
+			};
+		case REMOVE_PRODUCT_FROM_CART:
+			return {
+				...state,
+				cart     : state.cart.filter((product) => product._id !== action.payload._id),
+				userData : {
+					...state.userData,
+					totalAmount   : state.userData.totalAmount - action.payload.price,
+					totalProducts : state.userData.totalProducts - 1
+				}
+			};
+		case CLEAR_CART:
+			return {
+				...state,
+				cart     : [],
+				userData : {
+					...state.userData,
+					totalAmount   : 0,
+					totalProducts : 0
+				}
+			};
+		case UPDATE_PRODUCT:
+			const index = state.selledProducts.findIndex((product) => product._id === action.payload._id);
+			console.log(index);
+			state.selledProducts[index] = action.payload;
+			return {
+				...state
 			};
 		default:
 			return state;

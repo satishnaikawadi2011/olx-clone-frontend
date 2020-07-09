@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import styles from './MyMap.module.css';
 import { Button } from '../components/styledComponents/Button';
-import { useStore } from 'easy-peasy';
 import { useHistory, useLocation, Link, useParams, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import ErrorModal from '../components/shared/ErrorModal';
@@ -11,13 +10,7 @@ import LoadingSpinner from '../components/shared/LoadingSpinner';
 const API_KEY = 'pk.eyJ1Ijoic2F0aXNobmFpa2F3YWRpIiwiYSI6ImNrYnlyaG4yNzBndTQyeW1yODI4cWVtajMifQ.ntlSxOszlaPMTddHimFmSw';
 
 function MyMap(props) {
-	const store = useStore();
-	const isLoggedIn = store.getState().auth.isLoggedIn;
-	const location = useLocation();
-	// const id = location.state.id;
 	const { id } = useParams();
-	// console.log(id);
-	// const product = useStoreState((state) => state.prod.detail);
 	const [
 		product,
 		setProduct
@@ -63,10 +56,6 @@ function MyMap(props) {
 	useEffect(() => {
 		fetchProduct();
 	}, []);
-	if (!isLoggedIn) {
-		return <Redirect to="/" />;
-	}
-
 	if (error) {
 		return <ErrorModal error={error} onCancel={clearError} />;
 	}
