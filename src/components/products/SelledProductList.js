@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getProducts } from '../../redux/actions/dataActions';
 import SelledProductCard from './SelledProductCard';
 import { motion } from 'framer-motion';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 const headerVariant = {
 	hidden  : {
@@ -23,7 +24,7 @@ const SelledProductList = (props) => {
 		props.getProducts();
 	}, []);
 	if (loading) {
-		return <p>Loading...</p>;
+		return <LoadingSpinner />;
 	}
 	else {
 		return (

@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { signupUser } from '../../redux/actions/userActions';
+import { signupUser, clearErrors } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 import ErrorModal from '../shared/ErrorModal';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 import { FormWrapper } from '../styledComponents/FormWrapper';
 
@@ -27,11 +28,19 @@ const SignUp = (props) => {
 		error,
 		setError
 	] = useState(null);
-	if (errors) {
-		setError(errors);
-	}
+	useEffect(
+		() => {
+			if (errors) {
+				setError(errors);
+			}
+		},
+		[
+			errors
+		]
+	);
 	const clearError = () => {
 		setError(null);
+		props.clearErrors();
 	};
 	const onSubmitHandler = (values) => {
 		props.signupUser(values, props.history);
@@ -72,7 +81,7 @@ const SignUp = (props) => {
 		return <ErrorModal error={error} onCancel={clearError} />;
 	}
 	else if (loading) {
-		return <p>Loading .....</p>;
+		return <LoadingSpinner />;
 	}
 	else {
 		return (
@@ -164,4 +173,4 @@ const mapStateToProps = (state) => ({
 	UI : state.UI
 });
 
-export default connect(mapStateToProps, { signupUser })(SignUp);
+export default connect(mapStateToProps, { signupUser, clearErrors })(SignUp);

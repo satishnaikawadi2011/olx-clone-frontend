@@ -12,7 +12,6 @@ function ProductDetail(props) {
 		props.getProduct(props.match.params.id);
 	}, []);
 	const { product, errors } = props;
-	// console.log(product.owner);
 	const mapHandler = () => {
 		props.history.push({
 			pathname : '/map'
@@ -39,32 +38,6 @@ function ProductDetail(props) {
 			errors
 		]
 	);
-	// 	setIsLoading(true);
-	// 	Axios.post(`http://localhost:5000/api/products/me/addToCart/${id}`, null, {
-	// 		headers : {
-	// 			Authorization : 'Bearer ' + token
-	// 		}
-	// 	})
-	// 		.then((res) => setIsLoading(false))
-	// 		.catch((err) => {
-	// 			setIsLoading(false);
-	// 			setError(err.response.data.message || 'An Unknown error occured!');
-	// 			// console.log(error);
-	// 		});
-	// };
-	const [
-		inCart,
-		setInCart
-	] = useState(false);
-
-	// const isLoggedIn = store.getState().auth.isLoggedIn;
-	// if (!isLoggedIn) {
-	// 	return <Redirect to="/" />;
-	// }
-
-	// else if (isLoading) {
-	// 	return <LoadingSpinner />;
-	// }
 	if (error) {
 		return <ErrorModal error={error} onCancel={clearError} />;
 	}
@@ -81,14 +54,17 @@ function ProductDetail(props) {
 					<div className="row">
 						<div className="col-10 col-md-6 mx-auto my-5 d-flex justify-content-center">
 							<img
-								src={product.image}
+								src={`http://localhost:5000/${product.image}`}
 								className=" mt-4"
 								alt="Product"
 								style={{ height: '70vh', width: '90%', marginBottom: '10%', scale: 0.5 }}
 							/>
 						</div>
 
-						<div className="col-10 col-md-6 mx-auto my-5 text-capitalize">
+						<div
+							className="col-10 col-md-6 mx-auto my-5 text-capitalize"
+							style={{ overflowX: 'hidden', tex }}
+						>
 							<h2 className="text-heading2 text-white">Model : {product.model}</h2>
 							<h4 className="my-cursive text-muted text-uppercase mb-2 mt-3">
 								made by : {product.brand}
@@ -108,20 +84,16 @@ function ProductDetail(props) {
 							</p>
 							<p className="text-capitalize text-muted my-cursive">{product.description}</p>
 							<div className="d-flex justify-content-center">
-								<Link to="/buy">
+								<Link to="/buy" className="mr-3">
 									<Button color="#000099" hoverColor="#80e5ff">
 										Back To Products
 									</Button>
 								</Link>
 								<Button
 									color="#ff0066"
-									// disabled={inCart}
 									hoverColor="#ffb3d9"
 									onClick={() => addToCartHandler(product._id)}
 								>
-									{/* {
-										inCart ? 'In Cart' :
-										'Add To Cart'} */}
 									ADD TO CART
 								</Button>
 							</div>
@@ -166,28 +138,6 @@ function ProductDetail(props) {
 		);
 	}
 }
-
-// useEffect(
-// 	() => {
-// 		if (populatedAuthUser.cart.filter((prod) => prod.id === product.id).length == 0) {
-// 			setInCart(false);
-// 		}
-// 		else {
-// 			setInCart(true);
-// 		}
-// 	},
-// 	[
-// 		product.id,
-// 		populatedAuthUser.cart
-// 	]
-// );
-// return (
-// 	<React.Fragment>
-// 		{
-// 			isLoading ? <h2 className="text-dark">Loading....</h2> :
-// 			content()}
-// 	</React.Fragment>
-// );
 const mapStateToProps = (state) => ({
 	product : state.data.product,
 	errors  : state.UI.errors

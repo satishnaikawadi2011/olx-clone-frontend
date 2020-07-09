@@ -13,10 +13,11 @@ import {
 	REMOVE_PRODUCT_FROM_CART,
 	CLEAR_CART,
 	DELETE_PRODUCT,
-	UPDATE_PRODUCT
+	UPDATE_PRODUCT,
+	UPLOAD_PRODUCT
 } from '../types';
 import axios from 'axios';
-
+import { getProducts } from './dataActions';
 export const loginUser = (userData, history) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
@@ -63,7 +64,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 		.catch((err) => {
 			dispatch({
 				type    : SET_ERRORS,
-				payload : err.response.data
+				payload : err.response.data.message
 			});
 		});
 };
@@ -153,6 +154,23 @@ export const updateMyProduct = (id, data) => (dispatch) => {
 		})
 		.catch((err) => {
 			dispatch({ type: SET_ERRORS, payload: err.response.data.message });
+		});
+};
+
+export const uploadProduct = (data, history) => (dispatch) => {
+	dispatch({ type: LOADING_UI });
+	axios
+		.post(`/products`, data)
+		.then((res) => {
+			dispatch({ type: UPLOAD_PRODUCT, payload: res.data.product });
+			dispatch(getProducts());
+			dispatch({ type: STOP_LOADING_UI });
+			dispatch(clearErrors());
+			history.push('/userProducts');
+		})
+		.catch((err) => {
+			dispatch({ type: SET_ERRORS, payload: err.response.data.message });
+			console.log(err);
 		});
 };
 

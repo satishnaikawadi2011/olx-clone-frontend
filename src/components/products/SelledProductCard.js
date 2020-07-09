@@ -40,7 +40,11 @@ function SelledProductCard(props) {
 							}
 						}}
 					>
-						<img src={product.image} alt="product" className="card-img-top img" />
+						<img
+							src={`http://localhost:5000/${product.image}`}
+							alt="product"
+							className="card-img-top img"
+						/>
 
 						<button className="cart-btn" onClick={() => handleDetail(product._id)}>
 							<img src="https://img.icons8.com/flat_round/50/000000/info.png" alt="info" />

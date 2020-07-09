@@ -5,6 +5,7 @@ import { FormWrapper } from '../styledComponents/FormWrapper';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import ErrorModal from '../shared/ErrorModal';
+import LoadingSpinner from '../shared/LoadingSpinner';
 import { loginUser } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 
@@ -78,7 +79,7 @@ const Login = (props) => {
 		return <ErrorModal error={error} onCancel={clearError} />;
 	}
 	else if (loading) {
-		return <div className="text-black display-4">Loading...</div>;
+		return <LoadingSpinner />;
 	}
 	else {
 		return (

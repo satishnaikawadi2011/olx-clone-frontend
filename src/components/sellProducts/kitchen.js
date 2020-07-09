@@ -1,15 +1,8 @@
 import React from 'react';
 import SideBar from '../sideBar/SideBar';
 import MyForm from './Form';
-import { Redirect } from 'react-router-dom';
-import { useStore } from 'easy-peasy';
 
-const Kitchen = () => {
-	const store = useStore();
-	const isLoggedIn = store.getState().auth.isLoggedIn;
-	if (!isLoggedIn) {
-		return <Redirect to="/" />;
-	}
+const Kitchen = (props) => {
 	return (
 		<div>
 			<div className="container-fluid">
@@ -19,7 +12,7 @@ const Kitchen = () => {
 					</div>
 					<div className="col-md-10 col-10">
 						<h1 className="text-heading2 text-center">Kitchen</h1>
-						<MyForm />
+						<MyForm history={props.history} />
 					</div>
 				</div>
 			</div>

@@ -16,7 +16,14 @@ function ProductItem(props) {
 		<React.Fragment>
 			<div className="row my-1 text-capitalize text-center mb-3">
 				<div className="col-10 col-lg-2 mx-auto">
-					<img src={image} alt="product" className="img-fluid" style={{ height: '5rem', width: '5rem' }} />
+					<Link to={`/detail/${_id}`}>
+						<img
+							src={image}
+							alt="product"
+							className="img-fluid"
+							style={{ height: '5rem', width: '5rem' }}
+						/>
+					</Link>
 				</div>
 				<div className="col-10 col-lg-2 mx-auto  text-muted h4">
 					<span className="d-lg-none text-danger">category : </span>

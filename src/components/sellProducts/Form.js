@@ -8,10 +8,10 @@ import Input from '../form/Input';
 import TextArea from '../form/TextArea';
 import ImageUpload from '../form/ImageUpload';
 import MySelect from '../form/MySelect';
-import { useStoreActions, useStore } from 'easy-peasy';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import ErrorModal from '../shared/ErrorModal';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import { uploadProduct, clearErrors } from '../../redux/actions/userActions';
 
 const options = [
 	'Mobile',
@@ -96,21 +96,27 @@ const initialValues = {
 	contact     : ''
 };
 
-const MyForm = () => {
+const MyForm = (props) => {
+	const { loading, errors } = props.UI;
 	const formRef = useRef();
-	const store = useStore();
-	const token = store.getState().auth.token;
-	const [
-		isLoading,
-		setIsLoading
-	] = useState(false);
 	const [
 		error,
 		setError
 	] = useState(null);
 	const clearError = () => {
 		setError(null);
+		props.clearErrors();
 	};
+	useEffect(
+		() => {
+			if (errors) {
+				setError(errors);
+			}
+		},
+		[
+			errors
+		]
+	);
 	const inputHandler = (file) => {
 		formik.setFieldValue('image', file, false);
 	};
@@ -129,24 +135,7 @@ const MyForm = () => {
 		formData.append('category', values.category);
 		formData.append('price', +values.price);
 		console.log('formdata', formData);
-		console.log(values.category);
-		setIsLoading(true);
-		Axios.post('http://localhost:5000/api/products', values, {
-			headers : {
-				Authorization : 'Bearer ' + token
-			}
-		})
-			.then((res) => {
-				setIsLoading(false);
-			})
-			.catch((err) => {
-				setIsLoading(false);
-				if (err.response) {
-					return setError(err.response.data.message || 'An Unknown error occured!');
-				}
-				setError('Error occured');
-				// console.log(error);
-			});
+		props.uploadProduct(formData, props.history);
 	};
 
 	const formik = useFormik({
@@ -157,7 +146,7 @@ const MyForm = () => {
 	if (error) {
 		return <ErrorModal error={error} onCancel={clearError} />;
 	}
-	else if (isLoading) {
+	else if (loading) {
 		return <LoadingSpinner />;
 	}
 	else {
@@ -365,7 +354,11 @@ const MyForm = () => {
 	}
 };
 
-export default MyForm;
+const mapStateToProps = (state) => ({
+	UI : state.UI
+});
+
+export default connect(mapStateToProps, { uploadProduct, clearErrors })(MyForm);
 
 const FormWrapper = styled.div`
 	@media only screen and (max-width: 768px) {
